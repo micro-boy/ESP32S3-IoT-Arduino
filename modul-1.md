@@ -1,6 +1,6 @@
 # 📚 Modul 1: Pengenalan IoT dan Persiapan Lingkungan Pengembangan 
 
-<div align="center">
+<div>
   <img src="https://img.shields.io/badge/Tingkat-Pemula-brightgreen" alt="Tingkat: Pemula">
   <img src="https://img.shields.io/badge/Platform-ESP32--S3-blue" alt="Platform: ESP32-S3">
   <img src="https://img.shields.io/badge/IDE-Arduino-red" alt="IDE: Arduino">
@@ -20,6 +20,7 @@
 
 - [Pertemuan 1: Dasar-Dasar Internet of Things](#pertemuan-1-dasar-dasar-internet-of-things)
 - [Pertemuan 2: Pengenalan ESP32-S3 dan Setup Arduino IDE](#pertemuan-2-pengenalan-esp32-s3-dan-setup-arduino-ide)
+- [Menginstal Library di Arduino IDE](#menginstal-library-di-arduino-ide)
 - [Pertemuan 3: Pemrograman Dasar ESP32-S3 dengan Arduino IDE](#pertemuan-3-pemrograman-dasar-esp32-s3-dengan-arduino-ide)
 - [Tugas dan Latihan](#tugas-dan-latihan)
 - [Referensi dan Bacaan Tambahan](#referensi-dan-bacaan-tambahan)
@@ -320,6 +321,92 @@ void loop() {
 
 > 💡 **Tip**:  
 > Jika mengalami masalah saat upload, coba tekan dan tahan tombol BOOT pada board saat memulai upload, lalu lepaskan setelah upload dimulai.
+
+---
+---
+
+## 📦 Menginstal Library di Arduino IDE
+
+Library dalam konteks Arduino adalah kumpulan kode yang telah dibuat sebelumnya yang memungkinkan kita untuk dengan mudah berkomunikasi dengan sensor, modul, atau mengimplementasikan fungsionalitas tertentu tanpa harus menulis semua kode dari awal. Penggunaan library sangat penting dalam pengembangan IoT karena memungkinkan kita fokus pada logika aplikasi daripada detail implementasi teknis.
+
+### Mengapa Kita Membutuhkan Library?
+
+Library menyediakan beberapa keuntungan penting:
+
+1. **Menghemat Waktu**: Tidak perlu menulis kode kompleks dari awal
+2. **Kode Teroptimasi**: Library biasanya ditulis dan diuji oleh profesional
+3. **Komunitas Support**: Library populer memiliki dukungan komunitas yang baik
+4. **Abstraksi Kompleksitas**: Menyembunyikan detail teknis kompleks di balik API sederhana
+5. **Kompatibilitas**: Memastikan perangkat keras berfungsi dengan benar
+
+### Cara Menginstal Library via Library Manager
+
+Arduino IDE memiliki Library Manager bawaan yang memudahkan proses instalasi library. Berikut langkah-langkahnya:
+
+1. Buka Arduino IDE
+2. Klik menu **Sketch > Include Library > Manage Libraries...**
+3. Dialog Library Manager akan terbuka
+4. Gunakan kotak pencarian untuk menemukan library yang diinginkan
+5. Pilih versi yang ingin diinstal (biasanya versi terbaru)
+6. Klik tombol **Install**
+7. Tunggu hingga proses instalasi selesai
+8. Tutup Library Manager
+
+![Arduino Library Manager](https://via.placeholder.com/800x500?text=Arduino+Library+Manager)
+
+### Menginstal Library DHT untuk Sensor Suhu
+
+Untuk contoh proyek sensor suhu di akhir modul ini, kita memerlukan library DHT. Berikut cara menginstalnya:
+
+1. Buka Library Manager (Sketch > Include Library > Manage Libraries...)
+2. Ketik "DHT sensor" di kotak pencarian
+3. Cari library **"DHT sensor library by Adafruit"** (bukan "DHT sensor library for ESPx")
+4. Klik **Install**
+5. Saat muncul dialog "This library depends on Adafruit Unified Sensor...", pilih **Install all**
+
+![Instalasi Library DHT](https://via.placeholder.com/800x400?text=Instalasi+Library+DHT)
+
+Setelah instalasi, library ini memungkinkan kita untuk dengan mudah membaca data dari sensor DHT11 atau DHT22.
+
+> 🔍 **Catatan Penting**:  
+> Saat menginstal library DHT dari Adafruit, Arduino IDE akan menampilkan prompt untuk menginstal library tambahan yang dibutuhkan (dependencies). Selalu pilih "Install All" untuk memastikan semua komponen yang diperlukan terinstal dengan benar.
+
+### Menginstal Library Melalui Arsip ZIP
+
+Terkadang, library yang kita butuhkan tidak tersedia di Library Manager. Dalam kasus ini, kita bisa menginstal dari file ZIP:
+
+1. Unduh library dalam format ZIP dari sumber terpercaya (biasanya GitHub)
+2. Di Arduino IDE, pilih **Sketch > Include Library > Add .ZIP Library...**
+3. Navigasikan ke lokasi file ZIP yang diunduh
+4. Pilih file ZIP dan klik **Open**
+5. Tunggu hingga proses instalasi selesai
+
+### Library Penting untuk ESP32-S3 dan Proyek IoT
+
+Selain library DHT, berikut beberapa library berguna untuk pengembangan IoT dengan ESP32-S3:
+
+| Nama Library | Fungsi | Digunakan Untuk |
+|--------------|--------|-----------------|
+| WiFi | Konektivitas WiFi | Menghubungkan ESP32-S3 ke jaringan WiFi |
+| WiFiClientSecure | Koneksi aman | Komunikasi HTTPS dengan server |
+| PubSubClient | MQTT | Komunikasi menggunakan protokol MQTT |
+| ArduinoJson | Parsing JSON | Bekerja dengan data JSON |
+| ESP32 BLE | Bluetooth LE | Komunikasi Bluetooth Low Energy |
+| Adafruit SSD1306 | Display OLED | Mengontrol display OLED |
+| LittleFS | Sistem File | Penyimpanan data di flash memory |
+| AsyncTCP & ESPAsyncWebServer | Web Server | Membuat server web asinkron |
+
+### Mengatasi Masalah Umum dengan Library
+
+Beberapa masalah umum yang mungkin Anda temui:
+
+1. **Konflik Versi**: Jika mengalami masalah kompilasi, coba instal versi library yang lebih lama atau lebih baru
+2. **Dependencies Hilang**: Pastikan semua library yang dibutuhkan (dependencies) juga terinstal
+3. **Tidak Kompatibel dengan ESP32-S3**: Beberapa library mungkin belum diperbarui untuk ESP32-S3, cari library alternatif atau versi yang dimodifikasi
+4. **Error Kompilasi**: Periksa apakah library mendukung arsitektur ESP32-S3 dan Arduino IDE versi yang Anda gunakan
+
+> 💡 **Tip Berguna**:  
+> Jika ada pesan error yang menyebutkan "No such file or directory" untuk sebuah header file, itu biasanya berarti library belum terinstal dengan benar atau ada dependency yang hilang.
 
 ---
 ---
@@ -680,8 +767,8 @@ void blinkAllLeds(int times) {
 }
 ```
 
-> 💡 **Catatan**:  
-> Untuk menggunakan kode di atas, Anda perlu menginstal library DHT dari Library Manager Arduino IDE.
+> 🔔 **Penting**:  
+> Untuk menjalankan kode di atas, Anda harus terlebih dahulu menginstal library DHT seperti yang dijelaskan pada bagian "[Menginstal Library di Arduino IDE](#menginstal-library-di-arduino-ide)". Tanpa library ini, kode tidak akan dapat dikompilasi.
 
 ### Rangkaian untuk Proyek Sensor Suhu
 
