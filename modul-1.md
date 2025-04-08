@@ -1,796 +1,857 @@
-# 📘 Modul 1: Pengenalan dan Persiapan ESP32-S3
+# 📚 Modul 1: Pengenalan IoT dan Persiapan Lingkungan Pengembangan 
+
+<div>
+  <img src="https://img.shields.io/badge/Tingkat-Pemula-brightgreen" alt="Tingkat: Pemula">
+  <img src="https://img.shields.io/badge/Platform-ESP32--S3-blue" alt="Platform: ESP32-S3">
+  <img src="https://img.shields.io/badge/IDE-Arduino-red" alt="IDE: Arduino">
+</div>
 
 <div align="center">
-  <img src="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/_images/ESP32-S3-DevKitC-1-v1.1-isometric.png" width="400">
   
-  <p><em>ESP32-S3 Development Board - Microcontroller Modern dengan Kemampuan AI</em></p>
+  ![Internet of Things Header](https://via.placeholder.com/800x200?text=Internet+of+Things+with+ESP32-S3)
   
-  <p>
-    <img src="https://img.shields.io/badge/Tingkat-Pemula-brightgreen" alt="Tingkat: Pemula">
-    <img src="https://img.shields.io/badge/Platform-ESP32--S3-blue" alt="Platform: ESP32-S3">
-    <img src="https://img.shields.io/badge/IDE-Arduino-red" alt="IDE: Arduino">
-  </p>
+  *Kuliah Internet of Things dengan ESP32-S3 dan Arduino IDE*
+  
 </div>
+
+---
 
 ## 📋 Daftar Isi
 
-- [Tujuan Pembelajaran](#-tujuan-pembelajaran)
-- [Pengenalan Microcontroller](#-pengenalan-microcontroller)
-- [Mengenal ESP32-S3](#-mengenal-esp32-s3)
-- [Mempersiapkan Lingkungan Arduino IDE](#%EF%B8%8F-mempersiapkan-lingkungan-arduino-ide)
-- [Persiapan Rangkaian](#-persiapan-rangkaian)
-- [Program Pertama: Hello World ESP32-S3](#-program-pertama-hello-world-esp32-s3)
-- [Latihan Mandiri](#%EF%B8%8F-latihan-mandiri)
-- [Sumber Referensi](#-sumber-referensi)
+- [Pertemuan 1: Dasar-Dasar Internet of Things](#pertemuan-1-dasar-dasar-internet-of-things)
+- [Pertemuan 2: Pengenalan ESP32-S3 dan Setup Arduino IDE](#pertemuan-2-pengenalan-esp32-s3-dan-setup-arduino-ide)
+- [Menginstal Library di Arduino IDE](#menginstal-library-di-arduino-ide)
+- [Pertemuan 3: Pemrograman Dasar ESP32-S3 dengan Arduino IDE](#pertemuan-3-pemrograman-dasar-esp32-s3-dengan-arduino-ide)
+- [Tugas dan Latihan](#tugas-dan-latihan)
+- [Referensi dan Bacaan Tambahan](#referensi-dan-bacaan-tambahan)
 
 ---
 
-## 🎯 Tujuan Pembelajaran
+## 💡 Pertemuan 1: Dasar-Dasar Internet of Things
 
-Setelah mempelajari modul ini, Anda diharapkan dapat:
+### Apa itu Internet of Things (IoT)?
 
-1. Memahami konsep dasar microcontroller dan perannya dalam sistem embedded
-2. Menjelaskan arsitektur dan keunggulan ESP32-S3 dibandingkan microcontroller lain
-3. Menginstal dan mengkonfigurasi Arduino IDE untuk pengembangan ESP32-S3
-4. Menyiapkan rangkaian dasar untuk ESP32-S3
-5. Menulis, mengunggah, dan men-debug program dasar pada ESP32-S3
-6. Menggunakan Serial Monitor sebagai alat komunikasi dan debugging
+Internet of Things (IoT) adalah konsep di mana perangkat fisik di sekitar kita terhubung ke internet dan dapat berkomunikasi satu sama lain. Bayangkan jika lampu di rumah Anda, kulkas, AC, dan bahkan tanaman Anda bisa "berbicara" dan bertukar informasi melalui internet. Itulah esensi dari IoT!
+
+> 💬 **Definisi Sederhana:**  
+> IoT adalah jaringan perangkat fisik yang dilengkapi dengan sensor, software, dan teknologi lain yang memungkinkan mereka terhubung dan bertukar data melalui internet.
+
+### Evolusi Internet of Things (2000-2025)
+
+| Periode | Perkembangan Utama |
+|---------|-------------------|
+| 2000-2005 | Awal konsep IoT, RFID mulai digunakan secara luas |
+| 2005-2010 | Smartphone muncul, sensor menjadi lebih murah |
+| 2010-2015 | Cloud computing berkembang, platform IoT pertama |
+| 2015-2020 | IoT consumer meledak (smart home), standarisasi protokol |
+| 2020-2025 | AI terintegrasi dengan IoT (AIoT), edge computing, fokus pada keamanan dan privasi |
+
+### Arsitektur Sistem IoT
+
+Sistem IoT terdiri dari beberapa lapisan utama:
+
+1. **Lapisan Perangkat (Device Layer)** 
+   - Sensor dan aktuator yang berinteraksi dengan dunia fisik
+   - Mikrokontroler seperti ESP32-S3 yang mengontrol perangkat
+   - Komunikasi langsung seperti BLE atau RF
+
+2. **Lapisan Jaringan (Network Layer)**
+   - Teknologi komunikasi: WiFi, Bluetooth, LoRa, Zigbee, 5G
+   - Gateway yang menghubungkan perangkat ke internet
+   - Protokol komunikasi: MQTT, CoAP, HTTP
+
+3. **Lapisan Cloud (Cloud Layer)**
+   - Penyimpanan data jangka panjang
+   - Pemrosesan data skala besar
+   - Layanan analitik dan machine learning
+
+4. **Lapisan Aplikasi (Application Layer)**
+   - Aplikasi web dan mobile
+   - Dashboard visualisasi
+   - Sistem kontrol dan otomasi
+
+![Arsitektur IoT](https://via.placeholder.com/800x400?text=Arsitektur+Sistem+IoT)
+
+### Komponen Utama dalam Sistem IoT
+
+#### 1. Sensor
+Sensor adalah "mata dan telinga" sistem IoT. Mereka mengubah fenomena fisik menjadi sinyal elektrik yang dapat diproses.
+
+**Contoh sensor umum dalam IoT:**
+- Sensor suhu dan kelembaban (DHT22, BME280)
+- Sensor cahaya (LDR, BH1750)
+- Sensor gerakan (PIR, ultrasonik)
+- Sensor gas dan kualitas udara (MQ series)
+- Sensor tekanan (BMP180, BMP280)
+
+#### 2. Aktuator
+Aktuator adalah "tangan" sistem IoT. Mereka mengubah sinyal elektrik menjadi aksi fisik.
+
+**Contoh aktuator umum:**
+- Motor (servo, stepper, DC)
+- Relay untuk mengontrol perangkat listrik
+- LED dan display
+- Buzzer dan speaker
+- Solenoid dan katup
+
+#### 3. Mikrokontroler
+Mikrokontroler adalah "otak" sistem IoT. Mereka memproses data dari sensor dan mengontrol aktuator.
+
+**Contoh mikrokontroler populer untuk IoT:**
+- ESP32 dan ESP8266 (WiFi dan BLE)
+- Arduino (berbagai varian)
+- Raspberry Pi (untuk aplikasi yang membutuhkan computing power lebih)
+- STM32 dan Nordic nRF series
+
+Dalam kursus ini, kita akan fokus pada **ESP32-S3** yang merupakan mikrokontroler canggih dengan kemampuan WiFi, Bluetooth Low Energy, dan dukungan untuk machine learning di edge.
+
+### Ekosistem IoT dan Implementasi di Berbagai Sektor
+
+IoT telah mengubah banyak industri dan aspek kehidupan kita:
+
+#### Smart Home (Rumah Pintar)
+- Otomasi pencahayaan dan HVAC
+- Sistem keamanan pintar
+- Asisten virtual (Google Home, Amazon Echo)
+
+#### Smart Agriculture (Pertanian Pintar)
+- Irigasi otomatis berdasarkan kelembaban tanah
+- Pemantauan cuaca mikro
+- Pelacakan ternak
+
+#### Healthcare (Kesehatan)
+- Perangkat wearable untuk pemantauan kesehatan
+- Sistem telemedis
+- Pemantauan pasien jarak jauh
+
+#### Industrial IoT
+- Pemantauan mesin dan prediktif maintenance
+- Otomasi pabrik
+- Pelacakan inventori
+
+#### Smart City (Kota Pintar)
+- Manajemen lalu lintas adaptif
+- Pemantauan kualitas udara dan lingkungan
+- Manajemen energi dan sumber daya
+
+### Tren Terkini dalam IoT (2025)
+
+1. **Edge Computing**
+   - Pemrosesan data di dekat sumber (perangkat) daripada di cloud
+   - Mengurangi latensi dan beban jaringan
+   - Meningkatkan privasi dan ketahanan sistem
+
+2. **Digital Twin**
+   - Representasi virtual dari perangkat fisik
+   - Simulasi dan prediksi perilaku sistem
+   - Optimasi operasi dan pemeliharaan preventif
+
+3. **IoT Berkelanjutan**
+   - Fokus pada efisiensi energi
+   - Perangkat energy harvesting (mengambil energi dari lingkungan)
+   - Penggunaan material ramah lingkungan
+
+4. **AIoT (AI + IoT)**
+   - Integrasi kecerdasan buatan dengan IoT
+   - Machine learning di perangkat edge
+   - Automasi yang lebih cerdas dan adaptif
+
+5. **Security by Design**
+   - Keamanan menjadi fokus utama dari awal pengembangan
+   - Autentikasi dan enkripsi end-to-end
+   - Pembaruan keamanan otomatis
 
 ---
-
-## 🔍 Pengenalan Microcontroller
-
-### Apa itu Microcontroller?
-
-Microcontroller adalah komputer kecil terintegrasi dalam satu chip semikonduktor. Bayangkan sebuah komputer yang sangat kecil—tidak lebih besar dari ujung jari Anda—yang dirancang khusus untuk mengendalikan perangkat elektronik.
-
-Microcontroller memiliki tiga komponen utama:
-
-- **CPU (Central Processing Unit)**: Otak yang menjalankan instruksi program
-- **Memori**: Penyimpanan untuk program (Flash/ROM) dan data (RAM)
-- **Peripheral I/O**: Antarmuka dengan dunia luar (pin digital/analog, komunikasi, timer)
-
-> 💡 **Tahukah Anda?** Microcontroller ada di hampir semua perangkat elektronik modern: dari mesin cuci, microwave, mobil, hingga perangkat medis.
-
-### Perbedaan Microcontroller dan Microprocessor
-
-| Aspek | Microcontroller | Microprocessor |
-|-------|----------------|----------------|
-| **Definisi** | Sistem komputer lengkap dalam satu chip | Hanya unit pemrosesan (CPU) |
-| **Komponen** | CPU, memori, dan I/O terintegrasi | Membutuhkan chip eksternal untuk memori dan I/O |
-| **Fokus Desain** | Kontrol dan interaksi dengan perangkat | Pemrosesan data dan komputasi |
-| **Konsumsi Daya** | Sangat rendah (miliwatt) | Lebih tinggi (beberapa watt) |
-| **Kecepatan** | Moderat (MHz) | Tinggi (GHz) |
-| **Aplikasi** | Perangkat elektronik spesifik, IoT | Komputer, laptop, server |
-| **Contoh** | ESP32, Arduino, STM32 | Intel Core i7, AMD Ryzen |
-
-### Evolusi Microcontroller
-
-Perkembangan microcontroller dari masa ke masa:
-
-- **1970-an**: Intel 8048 - CPU 8-bit, memori sangat terbatas
-- **1980-an**: Intel 8051, Motorola 68HC11 - Arsitektur 8-bit yang lebih baik
-- **1990-an**: PIC dari Microchip, AVR dari Atmel - Arsitektur RISC, flash memory
-- **2000-an**: ARM Cortex-M series, Arduino - Arsitektur 32-bit, efisiensi daya tinggi
-- **2010-sekarang**: ESP32/ESP8266, STM32, Raspberry Pi RP2040 - Konektivitas wireless, AI/ML, multi-core
-
-> 🔄 **Evolusi Berkelanjutan**: Microcontroller modern seperti ESP32-S3 merepresentasikan puncak evolusi ini, menggabungkan daya komputasi tinggi dengan konektivitas nirkabel dan kemampuan AI yang dahulu hanya dimiliki oleh komputer berukuran penuh.
-
 ---
 
-## 🧠 Mengenal ESP32-S3
+## 🔌 Pertemuan 2: Pengenalan ESP32-S3 dan Setup Arduino IDE
 
-### Sejarah Singkat
+### Pengenalan ESP32-S3
 
-ESP32-S3 merupakan bagian dari keluarga ESP32 yang dikembangkan oleh Espressif Systems:
+ESP32-S3 adalah mikrokontroler canggih yang dikembangkan oleh Espressif Systems. Ini adalah evolusi dari keluarga ESP32 populer, dengan peningkatan signifikan dalam kemampuan pemrosesan, konektivitas, dan fitur keamanan.
 
-- **2014**: Espressif meluncurkan ESP8266, microcontroller Wi-Fi berbiaya rendah
-- **2016**: ESP32 generasi pertama diluncurkan dengan Bluetooth dan dual-core
-- **2019**: ESP32-S2 diluncurkan, fokus pada keamanan dan USB OTG
-- **2020**: ESP32-S3 diperkenalkan dengan peningkatan performa, AI/ML, dan keamanan
-- **2021**: ESP32-S3 mulai tersedia secara luas di pasaran
+![ESP32-S3 DevKit](https://via.placeholder.com/600x400?text=ESP32-S3+DevKit)
 
-### Arsitektur ESP32-S3
-
-<div align="center">
-  <img src="https://www.espressif.com/sites/default/files/product/ESP32-S3/block-diagram-esp32-s3.jpg" width="600">
-  <p><em>Diagram Blok ESP32-S3</em></p>
-</div>
+#### Fitur Utama ESP32-S3:
 
-ESP32-S3 memiliki arsitektur yang komprehensif:
+- **Prosesor**: Dual-core Xtensa LX7 hingga 240 MHz
+- **Memori**: 512 KB RAM internal, mendukung hingga 16MB PSRAM eksternal
+- **Penyimpanan**: Mendukung hingga 16MB flash eksternal
+- **Konektivitas**: WiFi 802.11 b/g/n dan Bluetooth 5 (LE)
+- **Neural Network Accelerator**: Hardware untuk aplikasi AI dan ML
+- **Keamanan**: Secure boot, flash encryption, trusted execution environment
+- **GPIO**: 45 pin GPIO yang dapat dikonfigurasi
+- **Peripheral**: SPI, I2C, I2S, UART, ADC, DAC, touch sensor, dll
 
-**1. Sistem Prosesor**:
-- **CPU**: Dual-core Xtensa LX7 32-bit dengan clock hingga 240 MHz
-- **Cache**: Memori cache untuk instruksi dan data
-- **DMA**: Direct Memory Access untuk transfer data efisien
-- **ROM**: Untuk bootloader dan fungsi dasar
-- **SRAM**: 512 KB untuk data dan program
+#### Perbedaan ESP32-S3 dengan Varian ESP32 Lainnya
 
-**2. Memori Eksternal**:
-- **Flash**: Mendukung hingga 16 MB flash eksternal
-- **PSRAM**: Mendukung hingga 8 MB PSRAM eksternal
+| Fitur | ESP32 Original | ESP32-S2 | ESP32-S3 | ESP32-C3 |
+|-------|---------------|----------|----------|----------|
+| CPU | Dual-core Xtensa LX6 | Single-core Xtensa LX7 | Dual-core Xtensa LX7 | Single-core RISC-V |
+| Frekuensi | 240 MHz | 240 MHz | 240 MHz | 160 MHz |
+| Bluetooth | Classic + BLE | Tidak ada | BLE 5.0 | BLE 5.0 |
+| USB | Tidak ada | OTG | OTG | Tidak ada |
+| Neural Network | Tidak ada | Tidak ada | Ada | Tidak ada |
+| Harga Relatif | ++ | + | +++ | + |
 
-**3. Sistem Wireless**:
-- **Wi-Fi**: 802.11 b/g/n (2.4 GHz)
-- **Bluetooth**: Bluetooth 5.0 (Classic & BLE)
+#### Kelebihan ESP32-S3 untuk Proyek IoT
 
-**4. Peripheral dan Interface**:
-- 45 GPIO pin
-- 14 sensor sentuh kapasitif
-- ADC 12-bit, DAC 8-bit
-- UART, I2C, I2S, SPI, TWAI (CAN)
-- LCD Interface, Camera Interface
-- USB OTG
-
-**5. Fitur Keamanan**:
-- Secure Boot, Flash Encryption
-- Hardware Accelerators untuk enkripsi
+1. **Performa Tinggi**: Dual-core 240 MHz memungkinkan multitasking yang efisien
+2. **Konektivitas Lengkap**: WiFi dan BLE dalam satu chip
+3. **Dukungan AI/ML**: Accelerator untuk inferensi model ML di edge
+4. **Keamanan Canggih**: Fitur keamanan yang komprehensif
+5. **Ekosistem yang Matang**: Didukung banyak framework dan library
 
-**6. Akselerator AI/ML**:
-- Vector extensions untuk komputasi neural network
-
-### Fitur Unggulan
+### Setup Arduino IDE untuk ESP32-S3
 
-ESP32-S3 memiliki beberapa keunggulan yang membuatnya menonjol:
-
-1. **🔄 Pemrosesan Dual-Core**: Memungkinkan pembagian tugas yang efisien
-2. **📡 Konektivitas Wireless Terintegrasi**: Wi-Fi dan Bluetooth dalam satu chip
-3. **🤖 Kemampuan Machine Learning**: Vector DSP extensions mempercepat inferensi AI
-4. **🔒 Keamanan Tingkat Lanjut**: Secure boot dan flash encryption
-5. **🔌 Interface USB OTG**: Memudahkan koneksi dengan komputer dan perangkat lain
-6. **🧰 Peripheral yang Kaya**: Banyaknya GPIO dan interface komunikasi
-7. **🔋 Efisiensi Daya**: Mode sleep yang dapat mengurangi konsumsi daya hingga microampere
-
-### Perbandingan dengan Microcontroller Lain
-
-| Fitur | ESP32-S3 | Arduino Uno | Raspberry Pi Pico | STM32F4 | Teensy 4.1 |
-|-------|----------|------------|-------------------|---------|------------|
-| **CPU** | Dual-core 240 MHz | 16 MHz | Dual-core 133 MHz | 168 MHz | 600 MHz |
-| **RAM** | 512 KB | 2 KB | 264 KB | 128-256 KB | 1 MB |
-| **Flash** | Hingga 16 MB | 32 KB | 2 MB | 512 KB - 2 MB | 8 MB |
-| **GPIO** | 45 pin | 14 pin | 26 pin | 16-140 pin | 55 pin |
-| **Wi-Fi** | ✅ | ❌ | ❌ | ❌ | ❌ |
-| **Bluetooth** | ✅ | ❌ | ❌ | ❌ | ❌ |
-| **USB** | OTG | Tidak | Micro USB | OTG (beberapa varian) | OTG |
-| **AI Acceleration** | ✅ | ❌ | ❌ | ❌ | ❌ |
-| **Harga Aprox.** | $5-10 | $3-5 | $4 | $5-15 | $25-30 |
-
-> 🏆 **Keunggulan Kompetitif**: ESP32-S3 menawarkan keseimbangan unik antara performa tinggi, konektivitas wireless terintegrasi, dan harga yang terjangkau.
-
----
-
-## ⚙️ Mempersiapkan Lingkungan Arduino IDE
-
-### Instalasi Arduino IDE
-
-Arduino IDE (Integrated Development Environment) adalah lingkungan pengembangan yang populer untuk microcontroller. Meskipun awalnya dibuat untuk board Arduino, saat ini Arduino IDE mendukung berbagai platform termasuk ESP32-S3.
-
-<div align="center">
-  <img src="https://docs.arduino.cc/static/19eeb10658665a0598eac34bfabb4488/a3803/ide-2-overview.jpg" width="600">
-  <p><em>Tampilan Arduino IDE 2.0</em></p>
-</div>
-
-**Langkah Instalasi:**
-
-1. **Download Arduino IDE**:
-   - Kunjungi [arduino.cc/en/software](https://arduino.cc/en/software)
-   - Pilih versi sesuai sistem operasi Anda (Windows, macOS, Linux)
-   - Disarankan menggunakan Arduino IDE 2.0 atau yang lebih baru
-
-2. **Instalasi pada Windows**:
-   - Jalankan file .exe yang didownload
-   - Ikuti petunjuk wizard instalasi
-   - Pilih untuk menginstal driver USB jika ditawarkan
-
-3. **Instalasi pada macOS**:
-   - Buka file .dmg yang didownload
-   - Seret ikon Arduino ke folder Applications
-   - Pada saat pertama menjalankan, Anda mungkin perlu mengonfirmasi di System Preferences > Security & Privacy
-
-4. **Instalasi pada Linux**:
-   - Ekstrak file .tar.xz ke lokasi pilihan Anda
-   - Jalankan script install.sh dari terminal
-   - Atau gunakan package manager: `sudo apt-get install arduino` (untuk Ubuntu/Debian)
-
-5. **Verifikasi Instalasi**:
-   - Buka Arduino IDE
-   - Pastikan tampilan utama muncul tanpa error
-
-### Konfigurasi untuk ESP32-S3
-
-Secara default, Arduino IDE tidak langsung mendukung ESP32-S3. Anda perlu menambahkan dukungan melalui Board Manager.
-
-**Langkah Konfigurasi:**
-
-1. **Tambahkan URL Board Manager**:
-   - Buka Arduino IDE
-   - Pilih **File > Preferences** (Windows/Linux) atau **Arduino > Preferences** (macOS)
-   - Pada field "Additional Boards Manager URLs", tambahkan URL berikut:
-     ```
-     https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
-     ```
-   - Jika sudah ada URL sebelumnya, tambahkan dengan koma sebagai pemisah
-   - Klik "OK" untuk menyimpan
-
-2. **Instal ESP32 Board Package**:
-   - Pilih **Tools > Board > Boards Manager**
-   - Di kolom pencarian, ketik "esp32"
-   - Cari paket bernama "ESP32 by Espressif Systems"
-   - Pilih versi terbaru dan klik "Install"
-   - Tunggu hingga proses selesai (bisa memakan waktu beberapa menit)
-
-3. **Pilih Board ESP32-S3**:
-   - Setelah instalasi selesai, pilih **Tools > Board > ESP32 Arduino**
-   - Pilih "ESP32S3 Dev Module" dari daftar
-
-4. **Konfigurasi Pengaturan Board Spesifik**:
-
-<div align="center">
-  <img src="https://i.imgur.com/vQYkFSl.png" width="600">
-  <p><em>Konfigurasi Spesifik ESP32-S3 di Arduino IDE</em></p>
-</div>
-
-   Konfigurasi pilihan untuk ESP32-S3 di menu Tools:
-   
-   - **Board**: "ESP32S3 Dev Module"
-   - **USB CDC On Boot**: "Enabled" (Aktifkan USB CDC saat boot)
-   - **CPU Frequency**: "240MHz (WiFi)" (Frekuensi CPU optimal)
-   - **Core Debug Level**: "None" (Tidak ada debug level untuk kinerja optimal)
-   - **USB DFU On Boot**: "Enabled" (Aktifkan USB DFU saat boot)
-   - **Upload Mode**: "UART0 / Hardware CDC" (Mode upload via UART)
-   - **Flash Mode**: "QIO 80MHz" (Mode flash optimal)
-   - **Flash Size**: "4MB" (Ukuran flash memori)
-   - **Partition Scheme**: "Default 4MB with spiffs" (Skema partisi dengan SPIFFS)
-   - **PSRAM**: "Disabled" (atau "OPI PSRAM" jika board mendukung)
-
-   > ⚠️ **Penting**: Pengaturan di atas sangat krusial untuk memastikan ESP32-S3 beroperasi dengan benar. Pastikan Anda mengatur nilai yang tepat, terutama untuk "USB CDC On Boot", "CPU Frequency", dan "Flash Size".
-
-5. **Instal Driver USB** (khusus Windows):
-   - Untuk board berbasis CP210x: [Download Driver CP210x](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers)
-   - Untuk board berbasis CH340: [Download Driver CH340](http://www.wch.cn/download/CH341SER_EXE.html)
-   - Jalankan installer driver dan ikuti petunjuknya
-   - Restart komputer setelah menginstal driver
-
-6. **Verifikasi Koneksi**:
-   - Hubungkan board ESP32-S3 ke komputer dengan kabel USB
-   - Periksa apakah board muncul di **Tools > Port**
-   - Pilih port yang sesuai (misalnya COM30 di Windows)
-
-> ⚠️ **Troubleshooting Koneksi**: Jika board tidak muncul di daftar port, coba kabel USB yang berbeda, coba port USB yang berbeda, tekan tombol BOOT saat mengunggah program, atau periksa driver terinstal dengan benar.
-
-### Struktur Program Arduino
-
-Program Arduino (disebut juga "sketch") memiliki struktur dasar dengan dua fungsi utama:
-
-```cpp
-// Deklarasi variabel global dan include library
-#include <Arduino.h>
-
-// Variabel global yang bisa diakses di semua fungsi
-int ledPin = 2;
-bool ledState = false;
-
-// Fungsi setup() dijalankan sekali saat board dinyalakan atau di-reset
-void setup() {
-  // Inisialisasi pin, komunikasi serial, dan konfigurasi awal
-  Serial.begin(115200);  // Memulai komunikasi serial dengan baud rate 115200
-  pinMode(ledPin, OUTPUT);  // Mengatur pin LED sebagai output
-  
-  Serial.println("ESP32-S3 telah dimulai!");  // Mengirim pesan ke Serial Monitor
-  delay(1000);  // Menunggu 1 detik agar Serial Monitor siap
-}
-
-// Fungsi loop() dijalankan berulang-ulang setelah setup() selesai
-void loop() {
-  // Kode utama program yang akan dijalankan berulang
-  ledState = !ledState;  // Mengubah status LED (menyala/mati)
-  
-  digitalWrite(ledPin, ledState);  // Mengatur pin sesuai status baru
-  
-  if (ledState) {
-    Serial.println("LED menyala");  // Mengirim pesan ketika LED menyala
-  } else {
-    Serial.println("LED mati");  // Mengirim pesan ketika LED mati
-  }
-  
-  delay(1000);  // Menunggu selama 1 detik (1000 ms) sebelum mengulang
-}
-```
-
-**Fungsi-fungsi Dasar Arduino:**
-
-- `pinMode(pin, mode)`: Mengatur pin sebagai INPUT, OUTPUT, atau INPUT_PULLUP
-- `digitalWrite(pin, value)`: Menulis nilai HIGH (1) atau LOW (0) ke pin digital
-- `digitalRead(pin)`: Membaca nilai pin digital (HIGH atau LOW)
-- `analogWrite(pin, value)`: Menghasilkan sinyal PWM (0-255) pada pin yang mendukung
-- `analogRead(pin)`: Membaca nilai analog (0-4095 pada ESP32-S3) dari pin ADC
-- `delay(ms)`: Menunda program selama beberapa milidetik
-- `millis()`: Mendapatkan waktu (dalam milidetik) sejak program dimulai
-
-### Mengenal Serial Monitor
-
-Serial Monitor adalah alat yang sangat penting untuk debugging dan komunikasi antara ESP32-S3 dan komputer.
-
-<div align="center">
-  <img src="https://docs.arduino.cc/static/1c9fba0045d928839d18eb0fee6182e9/29114/ide-serial-monitor.png" width="500">
-  <p><em>Serial Monitor Arduino IDE</em></p>
-</div>
-
-**Cara Menggunakan Serial Monitor:**
-
-1. **Membuka Serial Monitor**:
-   - Klik ikon kaca pembesar di pojok kanan atas Arduino IDE
-   - Atau pilih **Tools > Serial Monitor**
-   - Shortcut: Ctrl+Shift+M (Windows/Linux) atau Cmd+Shift+M (macOS)
-
-2. **Mengatur Baud Rate**:
-   - Pilih kecepatan yang sama dengan yang dikonfigurasi di kode `Serial.begin()`
-   - Pilihan umum: 9600, 115200 (paling umum untuk ESP32-S3)
-
-3. **Mengirim Data**:
-   - Ketik teks di kolom input di bagian atas
-   - Pilih opsi line ending (Newline, Carriage return, Both, No line ending)
-   - Klik "Send" atau tekan Enter
-
-4. **Menerima Data**:
-   - Output dari fungsi `Serial.print()` dan `Serial.println()` akan muncul di jendela utama
-
-> 💡 **Tip**: Tambahkan `Serial.println()` di berbagai titik program untuk melacak alur eksekusi dan nilai variabel. Ini sangat membantu untuk debugging.
-
----
+Arduino IDE adalah lingkungan pengembangan terintegrasi yang populer untuk memprogram mikrokontroler. Mari kita siapkan untuk bekerja dengan ESP32-S3.
 
-## 🔌 Persiapan Rangkaian
+#### 1. Mengunduh dan Menginstal Arduino IDE
 
-Sebelum kita mulai memprogram ESP32-S3, kita perlu menyiapkan rangkaian dasar yang diperlukan. Rangkaian dasar ini akan digunakan untuk praktikum "Hello World" pertama kita.
+1. Kunjungi [situs resmi Arduino](https://www.arduino.cc/en/software)
+2. Unduh versi terbaru untuk sistem operasi Anda (Windows, macOS, atau Linux)
+3. Instal dengan mengikuti petunjuk pada installer
 
-### Komponen yang Dibutuhkan
-
-Untuk rangkaian dasar ESP32-S3, Anda memerlukan:
+> ⚠️ **Catatan Penting**:  
+> Untuk pengalaman terbaik dengan ESP32-S3, kami sarankan menggunakan Arduino IDE versi 2.x yang memiliki antarmuka lebih modern dan fitur yang ditingkatkan.
 
-1. **Board ESP32-S3 Development** (misalnya ESP32-S3-DevKitC-1)
-2. **Kabel USB** (Type-C atau sesuai dengan port pada board Anda)
-3. **LED** (disarankan menggunakan warna merah atau hijau)
-4. **Resistor 220Ω atau 330Ω** (untuk membatasi arus ke LED)
-5. **Breadboard** (untuk merangkai komponen)
-6. **Kabel jumper** (untuk menghubungkan komponen)
+#### 2. Menginstal Dukungan ESP32 di Arduino IDE
 
-### Diagram Pinout ESP32-S3
+Arduino IDE tidak mendukung ESP32-S3 secara default. Kita perlu menambahkan dukungan untuk board ESP32:
 
-Sebelum merangkai, penting untuk memahami pinout ESP32-S3:
+1. Buka Arduino IDE
+2. Buka Preferences (File > Preferences)
+3. Pada field "Additional Boards Manager URLs", tambahkan URL berikut:
+   ```
+   https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+   ```
+4. Klik OK untuk menyimpan pengaturan
+5. Buka Boards Manager (Tools > Board > Boards Manager)
+6. Cari "esp32"
+7. Instal "ESP32 by Espressif Systems" versi terbaru
+8. Tunggu hingga instalasi selesai
 
-<div align="center">
-  <img src="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/_images/ESP32-S3_DevKitC-1_pinlayout.png" width="700">
-  <p><em>Pinout Diagram ESP32-S3-DevKitC-1</em></p>
-</div>
+![Arduino IDE Boards Manager](https://via.placeholder.com/800x500?text=Arduino+IDE+Boards+Manager+ESP32)
 
-Catatan penting tentang pinout:
-- ESP32-S3 beroperasi pada level tegangan 3.3V (bukan 5V)
-- GPIO2 biasanya terhubung ke LED bawaan pada sebagian besar development board
-- Pin-pin diberi label dengan nomor GPIO dan fungsi alternatifnya
-- Beberapa pin memiliki fungsi khusus, jadi periksa dokumentasi board Anda
+#### 3. Memilih Board ESP32-S3
 
-### Rangkaian Dasar: LED External
+Setelah instalasi selesai:
 
-Untuk rangkaian "Hello World" kita, kita akan menghubungkan LED eksternal ke ESP32-S3:
+1. Buka menu Tools > Board > ESP32 Arduino
+2. Pilih board ESP32-S3 yang Anda gunakan (contoh: "ESP32S3 Dev Module")
+3. Konfigurasikan pengaturan board lainnya:
+   - Flash Mode: "QIO"
+   - Flash Size: "4MB"
+   - Partition Scheme: "Default"
+   - PSRAM: "Enabled" (jika board Anda mendukung)
+   - Upload Speed: "921600"
 
-<div align="center">
-  <img src="https://i.imgur.com/szgAFoM.png" width="600">
-  <p><em>Rangkaian LED eksternal dengan ESP32-S3</em></p>
-</div>
+#### 4. Menginstal Driver USB (jika diperlukan)
 
-Langkah-langkah membuat rangkaian:
+Beberapa board ESP32-S3 memerlukan driver USB tambahan:
 
-1. **Hubungkan ESP32-S3 ke breadboard**:
-   - Pasang ESP32-S3 pada breadboard dengan hati-hati sesuai dengan posisi pin
-   - Pastikan semua pin terhubung dengan baik ke breadboard
+**Untuk Windows**:
+- Board dengan chip CP210x: [Silicon Labs CP210x Driver](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers)
+- Board dengan chip CH340/CH341: [CH340 Driver](https://www.wch.cn/downloads/CH341SER_EXE.html)
 
-2. **Rangkai LED dan resistor**:
-   - Pasang LED pada breadboard (perhatikan polaritas: kaki panjang adalah anoda/positif)
-   - Hubungkan resistor 220Ω/330Ω antara kaki anoda LED dan pin GPIO yang akan digunakan
-   - Dalam contoh ini, kita menggunakan GPIO13
-   - Hubungkan kaki katoda LED (kaki pendek) ke pin GND pada ESP32-S3
+**Untuk macOS dan Linux**, driver biasanya sudah tersedia atau akan terinstal otomatis.
 
-3. **Koneksi Daya**:
-   - ESP32-S3 akan mendapatkan daya melalui kabel USB yang terhubung ke komputer
+#### 5. Menginstal Library Esensial
 
-### Rangkaian Alternatif: Menggunakan LED Bawaan
+Beberapa library berguna untuk ESP32-S3:
 
-Jika board ESP32-S3 Anda memiliki LED bawaan (biasanya terhubung ke GPIO2), Anda dapat menggunakan LED tersebut tanpa komponen tambahan:
+1. Buka Library Manager (Tools > Manage Libraries)
+2. Cari dan instal library berikut:
+   - "WiFi" (biasanya sudah terinstal dengan ESP32 board package)
+   - "AsyncTCP" dan "ESPAsyncWebServer"
+   - "ArduinoJson"
+   - "PubSubClient" (untuk MQTT)
+   - "NTPClient" (untuk sinkronisasi waktu)
 
-<div align="center">
-  <img src="https://i.imgur.com/JyPEqWm.png" width="600">
-  <p><em>Menggunakan LED bawaan pada ESP32-S3</em></p>
-</div>
+### Verifikasi Instalasi dengan Sketch Sederhana
 
-Untuk menggunakan LED bawaan:
-1. Cukup hubungkan ESP32-S3 ke komputer menggunakan kabel USB
-2. Dalam kode, gunakan pin GPIO2 untuk mengontrol LED bawaan
-3. Tidak diperlukan komponen tambahan
-
-> ⚠️ **Perhatian**: Beberapa board ESP32-S3 mungkin memiliki LED bawaan yang terhubung ke pin yang berbeda. Periksa dokumentasi board Anda untuk memastikan pin yang benar.
-
-### Catatan Penting tentang Rangkaian
-
-1. **Tegangan Operasi**:
-   - ESP32-S3 beroperasi pada tegangan 3.3V
-   - Jangan hubungkan langsung ke sumber 5V atau komponen 5V tanpa level shifter
-
-2. **Arus Maksimum**:
-   - Pin GPIO ESP32-S3 dapat memasok hingga 40mA per pin
-   - Tetapi disarankan untuk membatasi arus di bawah 20mA untuk keamanan
-
-3. **Resistor Pembatas Arus**:
-   - Selalu gunakan resistor pembatas arus (220Ω-330Ω) saat menghubungkan LED
-   - Tanpa resistor, LED dapat rusak atau menyebabkan kerusakan pada pin ESP32-S3
-
-4. **Polaritas LED**:
-   - LED memiliki polaritas: kaki anoda (lebih panjang) dihubungkan ke sisi positif/pin GPIO
-   - Kaki katoda (lebih pendek) dihubungkan ke ground (GND)
-
-5. **Koneksi USB**:
-   - Gunakan kabel USB berkualitas baik yang mendukung transfer data
-   - Beberapa kabel USB hanya untuk pengisian daya dan tidak mendukung komunikasi data
-
----
-
-## 💡 Program Pertama: Hello World ESP32-S3
-
-Mari kita buat program pertama untuk ESP32-S3, sebuah "Hello World" yang akan mengedipkan LED bawaan dan mengirim pesan melalui Serial Monitor.
-
-### Persiapan Hardware
-
-Sebelum mulai memprogram, pastikan Anda memiliki:
-- Board ESP32-S3 yang terhubung ke komputer melalui kabel USB
-- Kabel USB yang mendukung transfer data, bukan hanya untuk charging
-- Port USB yang berfungsi dengan baik
-- Rangkaian LED (bawaan atau eksternal) seperti yang dijelaskan pada bagian sebelumnya
-
-### Kode Program
-
-Berikut adalah kode lengkap untuk program "Hello World" kita:
+Mari kita pastikan semuanya berfungsi dengan baik menggunakan sketch sederhana:
 
 ```cpp
 /*
- * Program Hello World ESP32-S3
- * Fungsi: Mengedipkan LED bawaan dan mengirim informasi ke Serial Monitor
- * Platform: ESP32-S3
- * Framework: Arduino IDE
+ * ESP32-S3 Blink Test
+ * -------------------
+ * Sketch sederhana untuk menguji apakah Arduino IDE dan ESP32-S3 telah dikonfigurasi dengan benar.
+ * LED internal akan berkedip setiap detik.
  */
 
-// Definisikan nomor pin untuk LED bawaan
-// Catatan: Pin ini mungkin berbeda tergantung pada board ESP32-S3 yang digunakan
-#define LED_PIN 2
+// Definisikan pin LED internal
+#define LED_PIN 2  // Untuk sebagian besar board ESP32-S3, LED internal ada di pin 2
 
-// Variabel untuk menghitung jumlah kedipan
-int counter = 0;
-
-// Variabel untuk menyimpan waktu mulai program
-unsigned long startTime;
-
+// Ini adalah fungsi setup yang berjalan sekali saat board dinyalakan
 void setup() {
-  // Inisialisasi komunikasi serial dengan kecepatan 115200 bps
+  // Inisialisasi komunikasi serial
   Serial.begin(115200);
   
-  // Berikan sedikit waktu agar Serial Monitor siap
-  delay(1000);
-  
-  // Catat waktu mulai program
-  startTime = millis();
-  
-  // Tampilkan pesan selamat datang
-  Serial.println("\n\n===================================");
-  Serial.println("    HELLO WORLD ESP32-S3!");
-  Serial.println("===================================");
-  Serial.println("Program ini akan mengedipkan LED dan");
-  Serial.println("mengirim informasi ke Serial Monitor");
+  // Tampilkan pesan di Serial Monitor
+  Serial.println("\n\nESP32-S3 Blink Test");
+  Serial.println("------------------");
+  Serial.println("Jika LED berkedip, setup Anda berhasil!");
   
   // Konfigurasi pin LED sebagai output
   pinMode(LED_PIN, OUTPUT);
-  
-  // Matikan LED pada awalnya
-  digitalWrite(LED_PIN, LOW);
-  
-  // Tampilkan informasi tentang board
-  Serial.print("Chip model: ");
-  Serial.println(ESP.getChipModel());
-  Serial.print("Chip cores: ");
-  Serial.println(ESP.getChipCores());
-  Serial.print("CPU frequency: ");
-  Serial.print(ESP.getCpuFreqMHz());
-  Serial.println(" MHz");
-  Serial.print("Flash size: ");
-  Serial.print(ESP.getFlashChipSize() / 1024 / 1024);
-  Serial.println(" MB");
-  
-  Serial.println("\nProgram dimulai!");
-  Serial.println("-----------------------------------");
 }
 
+// Fungsi loop berjalan berulang-ulang setelah setup selesai
 void loop() {
-  // Hitung waktu berjalan
-  unsigned long runningTime = millis() - startTime;
-  unsigned long seconds = runningTime / 1000;
-  
   // Nyalakan LED
   digitalWrite(LED_PIN, HIGH);
-  
-  // Tambahkan hitungan
-  counter++;
-  
-  // Tampilkan status
-  Serial.print("Kedipan ke-");
-  Serial.print(counter);
-  Serial.print(" (waktu berjalan: ");
-  Serial.print(seconds);
-  Serial.println("s)");
-  Serial.println("LED menyala");
-  
-  // Tunda selama LED menyala
-  delay(500);
+  Serial.println("LED ON");
+  delay(1000);  // Tunggu 1 detik
   
   // Matikan LED
   digitalWrite(LED_PIN, LOW);
-  Serial.println("LED mati");
-  
-  // Tunda lebih lama saat LED mati
-  delay(1500);
-  
-  // Tampilkan rangkuman setiap 10 kedipan
-  if (counter % 10 == 0) {
-    Serial.println("\n=================================");
-    Serial.print("RANGKUMAN: LED telah berkedip ");
-    Serial.print(counter);
-    Serial.print(" kali dalam ");
-    Serial.print(seconds);
-    Serial.println(" detik");
-    Serial.println("=================================\n");
-  }
+  Serial.println("LED OFF");
+  delay(1000);  // Tunggu 1 detik
 }
 ```
 
-### Penjelasan Kode
+#### Langkah Upload Sketch:
 
-**1. Definisi dan Variabel Global:**
-- `#define LED_PIN 2` mendefinisikan konstanta untuk pin LED (sesuaikan dengan board Anda)
-- `counter` menyimpan jumlah kedipan LED
-- `startTime` menyimpan waktu mulai program dalam milidetik
+1. Sambungkan board ESP32-S3 ke komputer menggunakan kabel USB
+2. Pilih port serial yang benar (Tools > Port)
+3. Klik tombol Upload (panah ke kanan)
+4. Tunggu kompilasi dan upload selesai
+5. Jika berhasil, LED di board akan mulai berkedip
 
-**2. Fungsi setup():**
-- Inisialisasi komunikasi serial dengan kecepatan 115200 bps
-- Menunggu 1 detik agar Serial Monitor siap
-- Mencatat waktu mulai program
-- Menampilkan pesan selamat datang dan informasi board
-- Mengonfigurasi pin LED sebagai output
-- Mematikan LED pada awalnya
-
-**3. Informasi Board:**
-- Menggunakan fungsi dari ESP32 API untuk mendapatkan informasi hardware
-- Menampilkan model chip, jumlah core, frekuensi CPU, dan ukuran flash
-
-**4. Fungsi loop():**
-- Menghitung waktu berjalan program
-- Menyalakan LED dengan `digitalWrite(LED_PIN, HIGH)`
-- Menambah hitungan kedipan
-- Menampilkan status ke Serial Monitor
-- Menunggu 500ms (0.5 detik) dengan LED menyala
-- Mematikan LED dengan `digitalWrite(LED_PIN, LOW)`
-- Menunggu 1500ms (1.5 detik) dengan LED mati
-- Setiap 10 kedipan, menampilkan rangkuman
-
-### Langkah Mengunggah Program
-
-1. **Sambungkan Board**:
-   - Hubungkan board ESP32-S3 ke komputer menggunakan kabel USB
-   - Pastikan board terdeteksi di Arduino IDE (akan muncul di **Tools > Port**)
-
-2. **Verifikasi Konfigurasi**:
-   - Periksa bahwa board ESP32-S3 dipilih di **Tools > Board**
-   - Pastikan port yang benar dipilih di **Tools > Port**
-   - Verifikasi pengaturan board sudah sesuai seperti yang disebutkan di bagian [Konfigurasi Pengaturan Board Spesifik](#konfigurasi-untuk-esp32-s3)
-
-3. **Verifikasi Kode**:
-   - Klik tombol "Verify" (centang) atau tekan Ctrl+R (Windows/Linux) / Cmd+R (macOS)
-   - Tunggu hingga proses kompilasi selesai
-   - Jika ada error, perbaiki kode sesuai pesan error yang muncul
-
-4. **Unggah Program**:
-   - Klik tombol "Upload" (panah ke kanan) atau tekan Ctrl+U (Windows/Linux) / Cmd+U (macOS)
-   - Tunggu proses kompilasi dan unggah selesai
-   - Pada beberapa board, Anda perlu menekan tombol BOOT selama proses unggah
-
-5. **Memantau Proses**:
-   - Arduino IDE akan menampilkan kemajuan unggah di panel bawah
-   - Pesan "Done uploading" menunjukkan proses berhasil
-
-### Debugging Program
-
-Setelah program terunggah, mari verifikasi bahwa program berjalan dengan benar:
-
-1. **Buka Serial Monitor**:
-   - Klik ikon kaca pembesar di pojok kanan atas Arduino IDE
-   - Atau pilih **Tools > Serial Monitor**
-   - Pastikan baud rate diatur ke 115200
-
-2. **Amati Output Serial**:
-   - Anda akan melihat pesan selamat datang dan informasi board
-   - Kemudian program akan menampilkan status LED yang berkedip
-   - Setiap 10 kedipan, rangkuman akan ditampilkan
-
-3. **Verifikasi Kedipan LED**:
-   - LED pada board ESP32-S3 harus berkedip sesuai dengan pola yang diprogram:
-     - Menyala selama 0.5 detik
-     - Mati selama 1.5 detik
-
-**Troubleshooting:**
-
-- **Jika LED Tidak Berkedip**: Periksa nomor pin yang digunakan (`LED_PIN`). Beberapa board menggunakan pin berbeda untuk LED bawaan. Coba ubah nilai `LED_PIN` ke nilai lain (misalnya 13, 5, atau 9) sesuai dengan dokumentasi board Anda. Jika menggunakan LED eksternal, periksa rangkaian Anda.
-
-- **Jika Serial Monitor Tidak Menampilkan Output**: Periksa bahwa baud rate di Serial Monitor sama dengan yang dikonfigurasi di kode (115200). Coba reset board dengan menekan tombol RESET. Pastikan kabel USB terhubung dengan baik dan mendukung transfer data.
-
-- **Jika Program Tidak Terunggah**: Periksa apakah port yang benar dipilih. Pada beberapa board ESP32-S3, Anda perlu menekan dan tahan tombol BOOT saat mengklik "Upload", kemudian lepaskan setelah upload dimulai. Coba dengan kabel USB yang berbeda atau port USB yang berbeda.
-
-> 💡 **Tip Pro**: Untuk memverifikasi bahwa board Anda berfungsi dengan benar tanpa masalah kode, coba unggah program contoh yang sudah teruji seperti **File > Examples > 01.Basics > Blink**. Jangan lupa untuk mengganti nomor pin LED jika diperlukan.
+> 💡 **Tip**:  
+> Jika mengalami masalah saat upload, coba tekan dan tahan tombol BOOT pada board saat memulai upload, lalu lepaskan setelah upload dimulai.
 
 ---
+---
 
-## 🏋️ Latihan Mandiri
+## 📦 Menginstal Library di Arduino IDE
 
-Sekarang saatnya Anda mencoba sendiri untuk memastikan pemahaman. Cobalah tantangan-tantangan berikut:
+Library dalam konteks Arduino adalah kumpulan kode yang telah dibuat sebelumnya yang memungkinkan kita untuk dengan mudah berkomunikasi dengan sensor, modul, atau mengimplementasikan fungsionalitas tertentu tanpa harus menulis semua kode dari awal. Penggunaan library sangat penting dalam pengembangan IoT karena memungkinkan kita fokus pada logika aplikasi daripada detail implementasi teknis.
 
-### Latihan 1: Modifikasi Pola Kedipan
+### Mengapa Kita Membutuhkan Library?
 
-Ubah kode untuk membuat pola kedipan yang lebih kompleks:
-- Buat LED berkedip cepat 3 kali (setiap kedipan 200ms menyala, 200ms mati)
-- Kemudian buat jeda panjang (2 detik)
-- Ulangi pola tersebut
+Library menyediakan beberapa keuntungan penting:
 
-<details>
-<summary>Petunjuk</summary>
+1. **Menghemat Waktu**: Tidak perlu menulis kode kompleks dari awal
+2. **Kode Teroptimasi**: Library biasanya ditulis dan diuji oleh profesional
+3. **Komunitas Support**: Library populer memiliki dukungan komunitas yang baik
+4. **Abstraksi Kompleksitas**: Menyembunyikan detail teknis kompleks di balik API sederhana
+5. **Kompatibilitas**: Memastikan perangkat keras berfungsi dengan benar
+
+### Cara Menginstal Library via Library Manager
+
+Arduino IDE memiliki Library Manager bawaan yang memudahkan proses instalasi library. Berikut langkah-langkahnya:
+
+1. Buka Arduino IDE
+2. Klik menu **Sketch > Include Library > Manage Libraries...**
+3. Dialog Library Manager akan terbuka
+4. Gunakan kotak pencarian untuk menemukan library yang diinginkan
+5. Pilih versi yang ingin diinstal (biasanya versi terbaru)
+6. Klik tombol **Install**
+7. Tunggu hingga proses instalasi selesai
+8. Tutup Library Manager
+
+![Arduino Library Manager](https://via.placeholder.com/800x500?text=Arduino+Library+Manager)
+
+### Menginstal Library DHT untuk Sensor Suhu
+
+Untuk contoh proyek sensor suhu di akhir modul ini, kita memerlukan library DHT. Berikut cara menginstalnya:
+
+1. Buka Library Manager (Sketch > Include Library > Manage Libraries...)
+2. Ketik "DHT sensor" di kotak pencarian
+3. Cari library **"DHT sensor library by Adafruit"** (bukan "DHT sensor library for ESPx")
+4. Klik **Install**
+5. Saat muncul dialog "This library depends on Adafruit Unified Sensor...", pilih **Install all**
+
+![Instalasi Library DHT](https://via.placeholder.com/800x400?text=Instalasi+Library+DHT)
+
+Setelah instalasi, library ini memungkinkan kita untuk dengan mudah membaca data dari sensor DHT11 atau DHT22.
+
+> 🔍 **Catatan Penting**:  
+> Saat menginstal library DHT dari Adafruit, Arduino IDE akan menampilkan prompt untuk menginstal library tambahan yang dibutuhkan (dependencies). Selalu pilih "Install All" untuk memastikan semua komponen yang diperlukan terinstal dengan benar.
+
+### Menginstal Library Melalui Arsip ZIP
+
+Terkadang, library yang kita butuhkan tidak tersedia di Library Manager. Dalam kasus ini, kita bisa menginstal dari file ZIP:
+
+1. Unduh library dalam format ZIP dari sumber terpercaya (biasanya GitHub)
+2. Di Arduino IDE, pilih **Sketch > Include Library > Add .ZIP Library...**
+3. Navigasikan ke lokasi file ZIP yang diunduh
+4. Pilih file ZIP dan klik **Open**
+5. Tunggu hingga proses instalasi selesai
+
+### Library Penting untuk ESP32-S3 dan Proyek IoT
+
+Selain library DHT, berikut beberapa library berguna untuk pengembangan IoT dengan ESP32-S3:
+
+| Nama Library | Fungsi | Digunakan Untuk |
+|--------------|--------|-----------------|
+| WiFi | Konektivitas WiFi | Menghubungkan ESP32-S3 ke jaringan WiFi |
+| WiFiClientSecure | Koneksi aman | Komunikasi HTTPS dengan server |
+| PubSubClient | MQTT | Komunikasi menggunakan protokol MQTT |
+| ArduinoJson | Parsing JSON | Bekerja dengan data JSON |
+| ESP32 BLE | Bluetooth LE | Komunikasi Bluetooth Low Energy |
+| Adafruit SSD1306 | Display OLED | Mengontrol display OLED |
+| LittleFS | Sistem File | Penyimpanan data di flash memory |
+| AsyncTCP & ESPAsyncWebServer | Web Server | Membuat server web asinkron |
+
+### Mengatasi Masalah Umum dengan Library
+
+Beberapa masalah umum yang mungkin Anda temui:
+
+1. **Konflik Versi**: Jika mengalami masalah kompilasi, coba instal versi library yang lebih lama atau lebih baru
+2. **Dependencies Hilang**: Pastikan semua library yang dibutuhkan (dependencies) juga terinstal
+3. **Tidak Kompatibel dengan ESP32-S3**: Beberapa library mungkin belum diperbarui untuk ESP32-S3, cari library alternatif atau versi yang dimodifikasi
+4. **Error Kompilasi**: Periksa apakah library mendukung arsitektur ESP32-S3 dan Arduino IDE versi yang Anda gunakan
+
+> 💡 **Tip Berguna**:  
+> Jika ada pesan error yang menyebutkan "No such file or directory" untuk sebuah header file, itu biasanya berarti library belum terinstal dengan benar atau ada dependency yang hilang.
+
+---
+---
+
+## 💻 Pertemuan 3: Pemrograman Dasar ESP32-S3 dengan Arduino IDE
+
+### Struktur Program Arduino
+
+Program Arduino, sering disebut "sketch", memiliki struktur dasar yang terdiri dari dua fungsi utama:
 
 ```cpp
+void setup() {
+  // Kode di sini berjalan sekali saat board dinyalakan
+}
+
 void loop() {
-  // Kedip cepat 3 kali
-  for(int i=0; i<3; i++) {
-    digitalWrite(LED_PIN, HIGH);
-    delay(200);
-    digitalWrite(LED_PIN, LOW);
-    delay(200);
-  }
-  
-  // Jeda panjang
-  delay(2000);
+  // Kode di sini berjalan berulang-ulang setelah setup selesai
 }
 ```
-</details>
 
-### Latihan 2: Menambahkan Informasi Running Time yang Lebih Rinci
+- **setup()**: Dieksekusi sekali saat board dinyalakan atau di-reset. Fungsi ini digunakan untuk inisialisasi pin, komunikasi serial, sensor, dan komponen lain.
+- **loop()**: Dieksekusi berulang-ulang setelah setup() selesai. Fungsi ini berisi kode utama program Anda.
 
-Modifikasi program untuk menampilkan waktu berjalan dalam format jam:menit:detik:
-- Gunakan `millis()` untuk menghitung waktu berjalan
-- Konversi ke format jam:menit:detik
-- Tampilkan di setiap iterasi loop
+### GPIO (General Purpose Input/Output)
 
-<details>
-<summary>Petunjuk</summary>
+ESP32-S3 memiliki banyak pin GPIO yang dapat dikonfigurasi sebagai input atau output digital.
+
+#### Menggunakan GPIO sebagai Output
 
 ```cpp
-unsigned long runningTime = millis() - startTime;
-unsigned long seconds = (runningTime / 1000) % 60;
-unsigned long minutes = (runningTime / (1000 * 60)) % 60;
-unsigned long hours = (runningTime / (1000 * 60 * 60)) % 24;
+/*
+ * Contoh GPIO Output
+ * -----------------
+ * Program ini menunjukkan cara mengontrol pin GPIO sebagai output digital.
+ * LED akan berkedip dengan pola yang berbeda.
+ */
 
-Serial.printf("Waktu berjalan: %02d:%02d:%02d\n", hours, minutes, seconds);
-```
-</details>
-
-### Latihan 3: Menambahkan Tombol Reset Counter
-
-Jika Anda memiliki push button atau dapat menambahkan satu, modifikasi program untuk:
-- Membaca input dari tombol yang terhubung ke pin GPIO
-- Mereset counter ke 0 ketika tombol ditekan
-- Menampilkan pesan "Counter di-reset" di Serial Monitor
-
-<details>
-<summary>Petunjuk</summary>
-
-```cpp
-#define BUTTON_PIN 5  // Ganti dengan pin yang sesuai
+// Definisikan pin LED
+#define LED_PIN 2
 
 void setup() {
-  // ...kode yang sudah ada...
-  pinMode(BUTTON_PIN, INPUT_PULLUP);  // Menggunakan resistor pull-up internal
+  // Inisialisasi pin LED sebagai output
+  pinMode(LED_PIN, OUTPUT);
+  
+  // Inisialisasi komunikasi serial
+  Serial.begin(115200);
+  Serial.println("ESP32-S3 GPIO Output Test");
 }
 
 void loop() {
-  // Cek apakah tombol ditekan (akan memberikan nilai LOW karena pull-up)
-  if (digitalRead(BUTTON_PIN) == LOW) {
-    counter = 0;
-    Serial.println("Counter di-reset!");
-    delay(300);  // Debouncing sederhana
+  // Pola berkedip cepat
+  for (int i = 0; i < 5; i++) {
+    digitalWrite(LED_PIN, HIGH);  // Nyalakan LED
+    delay(100);                  // Tunggu 100ms
+    digitalWrite(LED_PIN, LOW);   // Matikan LED
+    delay(100);                  // Tunggu 100ms
   }
   
-  // ...kode yang sudah ada...
+  // Jeda
+  delay(1000);
+  
+  // Pola berkedip lambat
+  for (int i = 0; i < 3; i++) {
+    digitalWrite(LED_PIN, HIGH);  // Nyalakan LED
+    delay(500);                  // Tunggu 500ms
+    digitalWrite(LED_PIN, LOW);   // Matikan LED
+    delay(500);                  // Tunggu 500ms
+  }
+  
+  // Jeda
+  delay(1000);
 }
 ```
-</details>
 
-### Latihan 4: Implementasi Kontrol Melalui Serial
+---
 
-Ubah program untuk menerima perintah dari Serial Monitor:
-- Saat "on" dikirim, LED menyala terus
-- Saat "off" dikirim, LED mati terus
-- Saat "blink" dikirim, LED kembali ke mode berkedip
-- Saat "status" dikirim, tampilkan status sistem saat ini
-
-<details>
-<summary>Petunjuk</summary>
+#### Menggunakan GPIO sebagai Input
 
 ```cpp
-// Tambahkan variabel mode
-String mode = "blink";  // Mode default: berkedip
+/*
+ * Contoh GPIO Input
+ * ----------------
+ * Program ini menunjukkan cara membaca status pin GPIO sebagai input digital.
+ * LED akan menyala ketika tombol ditekan.
+ */
+
+// Definisikan pin
+#define BUTTON_PIN 15   // Pin tombol
+#define LED_PIN    2    // Pin LED
+
+// Variabel untuk menyimpan status tombol
+int buttonState = 0;
+
+void setup() {
+  // Inisialisasi pin
+  pinMode(BUTTON_PIN, INPUT_PULLUP);  // Input dengan resistor pull-up internal
+  pinMode(LED_PIN, OUTPUT);
+  
+  // Inisialisasi komunikasi serial
+  Serial.begin(115200);
+  Serial.println("ESP32-S3 GPIO Input Test");
+  Serial.println("Tekan tombol untuk menyalakan LED");
+}
 
 void loop() {
-  // Periksa perintah serial
-  if (Serial.available() > 0) {
-    String command = Serial.readStringUntil('\n');
-    command.trim();  // Menghapus whitespace
-    
-    if (command == "on") {
-      mode = "on";
-      Serial.println("Mode: ON - LED akan menyala terus");
-    } 
-    else if (command == "off") {
-      mode = "off";
-      Serial.println("Mode: OFF - LED akan mati terus");
-    }
-    else if (command == "blink") {
-      mode = "blink";
-      Serial.println("Mode: BLINK - LED akan berkedip");
-    }
-    else if (command == "status") {
-      Serial.println("Status saat ini:");
-      Serial.println("Mode: " + mode);
-      Serial.println("Jumlah kedipan: " + String(counter));
-      // Tambahkan informasi lain yang relevan
-    }
+  // Baca status tombol
+  buttonState = digitalRead(BUTTON_PIN);
+  
+  // Perhatikan: dengan INPUT_PULLUP, tombol menghasilkan LOW saat ditekan
+  if (buttonState == LOW) {
+    // Tombol ditekan
+    digitalWrite(LED_PIN, HIGH);  // Nyalakan LED
+    Serial.println("Tombol ditekan - LED menyala");
+  } else {
+    // Tombol tidak ditekan
+    digitalWrite(LED_PIN, LOW);   // Matikan LED
   }
   
-  // Logika berdasarkan mode
-  if (mode == "on") {
-    digitalWrite(LED_PIN, HIGH);
-    delay(1000);  // Hanya untuk memberi jeda antar iterasi
+  // Sedikit delay untuk stabilitas
+  delay(100);
+}
+```
+
+> ⚠️ **Catatan Keamanan**:  
+> ESP32-S3 bekerja pada level tegangan 3.3V. Pastikan tidak menghubungkan pin GPIO langsung ke sumber tegangan yang lebih tinggi (seperti 5V) karena dapat merusak board.
+
+---
+
+### Pembacaan Input Analog dengan ADC
+
+ESP32-S3 memiliki Analog-to-Digital Converter (ADC) yang memungkinkan kita membaca nilai analog dari sensor.
+
+```cpp
+/*
+ * Contoh ADC (Analog-to-Digital Converter)
+ * ---------------------------------------
+ * Program ini menunjukkan cara membaca nilai analog dari sensor potentiometer
+ * dan menampilkannya di Serial Monitor.
+ */
+
+// Definisikan pin
+#define ANALOG_PIN 1    // Pin ADC
+
+// Variabel untuk menyimpan nilai analog
+int analogValue = 0;
+
+void setup() {
+  // Inisialisasi komunikasi serial
+  Serial.begin(115200);
+  Serial.println("ESP32-S3 ADC Test");
+  
+  // Konfigurasi resolusi ADC (0-4095)
+  analogReadResolution(12);  // 12-bit resolution
+}
+
+void loop() {
+  // Baca nilai analog
+  analogValue = analogRead(ANALOG_PIN);
+  
+  // Konversi nilai ADC ke tegangan (0-3.3V)
+  float voltage = analogValue * (3.3 / 4095.0);
+  
+  // Tampilkan nilai di Serial Monitor
+  Serial.print("Nilai ADC: ");
+  Serial.print(analogValue);
+  Serial.print(" | Tegangan: ");
+  Serial.print(voltage, 2);  // 2 angka desimal
+  Serial.println("V");
+  
+  // Tunggu sebentar
+  delay(500);
+}
+```
+
+---
+
+### Pulse Width Modulation (PWM)
+
+PWM memungkinkan kita menghasilkan sinyal analog dari pin digital, berguna untuk mengontrol kecerahan LED, kecepatan motor, dll.
+
+```cpp
+/*
+ * Contoh PWM (Pulse Width Modulation)
+ * ----------------------------------
+ * Program ini menunjukkan cara menggunakan PWM untuk mengontrol kecerahan LED.
+ * LED akan berubah dari redup ke terang dan kembali ke redup secara berulang.
+ */
+
+// Definisikan pin dan parameter PWM
+#define LED_PIN     2    // Pin LED dengan PWM
+#define PWM_CHANNEL 0    // Channel PWM (ESP32 memiliki 16 channel)
+#define PWM_FREQ    5000 // Frekuensi PWM (Hz)
+#define PWM_RES     8    // Resolusi PWM (8-bit, 0-255)
+
+void setup() {
+  // Konfigurasi PWM
+  ledcSetup(PWM_CHANNEL, PWM_FREQ, PWM_RES);
+  
+  // Hubungkan pin LED ke channel PWM
+  ledcAttachPin(LED_PIN, PWM_CHANNEL);
+  
+  // Inisialisasi komunikasi serial
+  Serial.begin(115200);
+  Serial.println("ESP32-S3 PWM Test");
+}
+
+void loop() {
+  // Fade in (redup ke terang)
+  Serial.println("Fade in");
+  for (int dutyCycle = 0; dutyCycle <= 255; dutyCycle++) {
+    // Setel duty cycle PWM
+    ledcWrite(PWM_CHANNEL, dutyCycle);
+    delay(5);  // Tunggu 5ms
   }
-  else if (mode == "off") {
-    digitalWrite(LED_PIN, LOW);
-    delay(1000);  // Hanya untuk memberi jeda antar iterasi
+  
+  // Tunggu sebentar saat LED terang penuh
+  delay(500);
+  
+  // Fade out (terang ke redup)
+  Serial.println("Fade out");
+  for (int dutyCycle = 255; dutyCycle >= 0; dutyCycle--) {
+    // Setel duty cycle PWM
+    ledcWrite(PWM_CHANNEL, dutyCycle);
+    delay(5);  // Tunggu 5ms
   }
-  else if (mode == "blink") {
-    // Kode kedipan yang sudah ada
-    digitalWrite(LED_PIN, HIGH);
-    // ...
-    delay(500);
-    digitalWrite(LED_PIN, LOW);
-    // ...
-    delay(1500);
+  
+  // Tunggu sebentar saat LED mati
+  delay(500);
+}
+```
+
+---
+
+### Membuat Proyek Sederhana: Sistem Monitoring Suhu
+
+Mari kita kombinasikan semua yang telah kita pelajari untuk membuat sistem yang membaca sensor suhu dan merespons dengan LED dan output serial.
+
+Untuk contoh ini, kita akan menggunakan sensor DHT11 atau DHT22 yang umum digunakan untuk membaca suhu dan kelembaban.
+
+```cpp
+/*
+ * Sistem Monitoring Suhu
+ * ----------------------
+ * Program ini membaca suhu dan kelembaban dari sensor DHT, 
+ * menampilkan datanya di Serial Monitor, dan mengontrol LED 
+ * berdasarkan nilai suhu.
+ */
+
+// Include library DHT sensor
+#include <DHT.h>
+
+// Definisikan pin dan parameter
+#define DHT_PIN      4     // Pin data sensor DHT
+#define DHT_TYPE     DHT22 // Tipe sensor (DHT11 atau DHT22)
+#define LED_BLUE     2     // LED biru untuk suhu dingin
+#define LED_YELLOW   16    // LED kuning untuk suhu normal
+#define LED_RED      17    // LED merah untuk suhu panas
+
+// Batas suhu (dalam derajat Celsius)
+#define TEMP_COLD    20    // Di bawah ini dianggap dingin
+#define TEMP_HOT     30    // Di atas ini dianggap panas
+
+// Inisialisasi sensor DHT
+DHT dht(DHT_PIN, DHT_TYPE);
+
+// Variabel untuk menyimpan data sensor
+float temperature;
+float humidity;
+
+void setup() {
+  // Inisialisasi komunikasi serial
+  Serial.begin(115200);
+  Serial.println("ESP32-S3 Sistem Monitoring Suhu");
+  
+  // Inisialisasi pin LED
+  pinMode(LED_BLUE, OUTPUT);
+  pinMode(LED_YELLOW, OUTPUT);
+  pinMode(LED_RED, OUTPUT);
+  
+  // Matikan semua LED pada awalnya
+  digitalWrite(LED_BLUE, LOW);
+  digitalWrite(LED_YELLOW, LOW);
+  digitalWrite(LED_RED, LOW);
+  
+  // Mulai sensor DHT
+  dht.begin();
+  Serial.println("Sensor DHT diinisialisasi");
+  
+  // Jeda singkat untuk stabilisasi sensor
+  delay(2000);
+}
+
+void loop() {
+  // Baca suhu dan kelembaban
+  humidity = dht.readHumidity();
+  temperature = dht.readTemperature();
+  
+  // Periksa apakah pembacaan berhasil
+  if (isnan(humidity) || isnan(temperature)) {
+    Serial.println("Gagal membaca data dari sensor DHT!");
+    // Kedipkan semua LED sebagai indikasi error
+    blinkAllLeds(3);
+    return;
+  }
+  
+  // Tampilkan data di Serial Monitor
+  Serial.print("Suhu: ");
+  Serial.print(temperature);
+  Serial.print("°C | Kelembaban: ");
+  Serial.print(humidity);
+  Serial.println("%");
+  
+  // Kontrol LED berdasarkan suhu
+  updateLeds(temperature);
+  
+  // Tunggu sebelum pembacaan berikutnya
+  delay(2000);
+}
+
+// Fungsi untuk mengendalikan LED berdasarkan suhu
+void updateLeds(float temp) {
+  // Matikan semua LED terlebih dahulu
+  digitalWrite(LED_BLUE, LOW);
+  digitalWrite(LED_YELLOW, LOW);
+  digitalWrite(LED_RED, LOW);
+  
+  // Nyalakan LED yang sesuai
+  if (temp < TEMP_COLD) {
+    // Suhu dingin, nyalakan LED biru
+    digitalWrite(LED_BLUE, HIGH);
+    Serial.println("Status: DINGIN");
+  } else if (temp >= TEMP_COLD && temp < TEMP_HOT) {
+    // Suhu normal, nyalakan LED kuning
+    digitalWrite(LED_YELLOW, HIGH);
+    Serial.println("Status: NORMAL");
+  } else {
+    // Suhu panas, nyalakan LED merah
+    digitalWrite(LED_RED, HIGH);
+    Serial.println("Status: PANAS");
+  }
+}
+
+// Fungsi untuk mengedipkan semua LED (indikasi error)
+void blinkAllLeds(int times) {
+  for (int i = 0; i < times; i++) {
+    // Nyalakan semua LED
+    digitalWrite(LED_BLUE, HIGH);
+    digitalWrite(LED_YELLOW, HIGH);
+    digitalWrite(LED_RED, HIGH);
+    delay(200);
+    
+    // Matikan semua LED
+    digitalWrite(LED_BLUE, LOW);
+    digitalWrite(LED_YELLOW, LOW);
+    digitalWrite(LED_RED, LOW);
+    delay(200);
   }
 }
 ```
-</details>
+
+> 🔔 **Penting**:  
+> Untuk menjalankan kode di atas, Anda harus terlebih dahulu menginstal library DHT seperti yang dijelaskan pada bagian "[Menginstal Library di Arduino IDE](#menginstal-library-di-arduino-ide)". Tanpa library ini, kode tidak akan dapat dikompilasi.
+
+### Rangkaian untuk Proyek Sensor Suhu
+
+![Rangkaian Sensor Suhu](https://via.placeholder.com/800x600?text=Rangkaian+Sistem+Monitoring+Suhu)
+
+**Komponen yang dibutuhkan:**
+- ESP32-S3 Development Board
+- Sensor DHT11 atau DHT22
+- 3 LED (biru, kuning, merah)
+- 3 resistor 220 ohm (untuk LED)
+- Resistor 10K ohm (untuk DHT jika tidak memiliki resistor pull-up internal)
+- Breadboard dan kabel jumper
+
+**Koneksi:**
+1. Hubungkan pin VCC DHT ke 3.3V ESP32-S3
+2. Hubungkan pin GND DHT ke GND ESP32-S3
+3. Hubungkan pin DATA DHT ke pin 4 ESP32-S3
+4. Hubungkan LED biru ke pin 2 ESP32-S3 melalui resistor 220 ohm
+5. Hubungkan LED kuning ke pin 16 ESP32-S3 melalui resistor 220 ohm
+6. Hubungkan LED merah ke pin 17 ESP32-S3 melalui resistor 220 ohm
+7. Hubungkan ujung lain semua LED ke GND
+
+---
+---
+
+## 📝 Tugas dan Latihan
+
+### Latihan 1: Blink Multipleks
+Modifikasi contoh LED blink untuk mengendalikan 3 LED dengan pola yang berbeda.
+
+### Latihan 2: Membaca Sensor Analog
+Gunakan sensor LDR (Light Dependent Resistor) untuk membuat lampu otomatis yang menyala ketika gelap.
+
+### Latihan 3: Kontrol PWM Lanjutan
+Buat sistem dengan tombol untuk mengontrol kecerahan LED. Setiap kali tombol ditekan, kecerahan meningkat 25% sampai 100%, kemudian kembali ke 0%.
+
+### Proyek Mini: Stasiun Cuaca Sederhana
+Buat sistem yang membaca suhu, kelembaban, dan intensitas cahaya, lalu menampilkan datanya di Serial Monitor dan mengendalikan LED sebagai indikator visual.
+
+---
+---
+
+## 📚 Referensi dan Bacaan Tambahan
+
+### Buku Referensi
+1. Schwartz, M. (2023). *Internet of Things with ESP32: Building Connected Devices with ESP32 Microcontrollers*. Apress. Bab 1-3.
+2. Raj, P., & Raman, A. C. (2022). *The Internet of Things: Enabling Technologies, Platforms, and Use Cases*. CRC Press. Bab 1: "Dasar-dasar IoT".
+3. Hughes, J. M. (2021). *Arduino: A Technical Reference*. O'Reilly Media. Bagian IV: "Working with Arduino and ESP Microcontrollers".
+4. Blum, J. (2022). *Exploring Arduino: Tools and Techniques for Engineering Wizardry* (2nd Edition). Wiley. Bab 12: "Connecting to the Internet with ESP32".
+5. Purdum, J. (2021). *Beginning C for Arduino: Learn C Programming for the Arduino and Compatible Microcontrollers*. Apress. Bab 1-5: Dasar-dasar pemrograman C.
+
+### Publikasi Ilmiah
+6. Maier, A., Sharp, A., & Vagapov, Y. (2023). "Comparative Analysis of IoT Development Boards for Educational Purposes." *IEEE Transactions on Education*, 66(1), 32-41.
+7. Espressif Systems. (2024). "ESP32-S3 Technical Reference Manual" [Version 1.2]. *Espressif Systems*.
+8. Kumar, R., & Patel, D. R. (2023). "Educational Approaches to Internet of Things: A Review of Platforms and Pedagogical Methods." *International Journal of Electrical Engineering Education*, 60(1), 92-115.
+9. Verma, A., Singh, Y., & Kumar, N. (2022). "Survey on Arduino-Based Development Platforms for IoT Applications." *Journal of Systems Architecture*, 123, 102395.
+
+### Tutorial dan Materi Online
+10. Colwell, J. (2024). "Getting Started with ESP32-S3 and Arduino IDE." *Random Nerd Tutorials*. [https://randomnerdtutorials.com/esp32-s3-arduino-ide-setup/](https://randomnerdtutorials.com/esp32-s3-arduino-ide-setup/)
+11. Grokhotkov, I. (2023). "ESP32-S3 Arduino Core Documentation." *GitHub - espressif/arduino-esp32*. [https://github.com/espressif/arduino-esp32/tree/master/docs](https://github.com/espressif/arduino-esp32/tree/master/docs)
+12. Thompson, L. (2024). "Understanding GPIO, PWM, and ADC with ESP32-S3." *DroneBot Workshop*. [https://dronebotworkshop.com](https://dronebotworkshop.com)
+13. Espressif Systems. (2024). "ESP32-S3 Datasheet." *Espressif Systems*. [https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf)
+14. Arduino Team. (2023). "Arduino Reference." *Arduino*. [https://www.arduino.cc/reference/en/](https://www.arduino.cc/reference/en/)
+
+### Video dan Kursus Online
+15. Spiess, A. (2023). "ESP32-S3 First Look and Comparison with ESP32." *YouTube*. [https://www.youtube.com/c/AndreasSpiess](https://www.youtube.com/c/AndreasSpiess)
+16. Valden, M. (2024). "Internet of Things Fundamentals." *Coursera*. [https://www.coursera.org/learn/iot-fundamentals](https://www.coursera.org/learn/iot-fundamentals)
+17. Lewis, S. (2023). "ESP32 Programming from Scratch." *Udemy*. [https://www.udemy.com/course/esp32-programming](https://www.udemy.com/course/esp32-programming)
+
+### Situs Komunitas dan Forum
+18. "ESP32 Forum." *ESP32 Forum*. [https://esp32.com/](https://esp32.com/)
+19. "Arduino Forum - ESP32 Section." *Arduino Forum*. [https://forum.arduino.cc/](https://forum.arduino.cc/)
+20. "Reddit r/esp32." *Reddit*. [https://www.reddit.com/r/esp32/](https://www.reddit.com/r/esp32/)
+
+> 📝 **Catatan untuk Mahasiswa:**  
+> Referensi 1-5 sangat direkomendasikan untuk pemahaman fundamental tentang IoT dan pemrograman ESP32-S3. Untuk panduan praktis tentang setup dan pemrograman dasar, referensi 10-14 akan sangat membantu.
 
 ---
 
-## 📚 Sumber Referensi
-
-1. Espressif Systems. (2023). *ESP32-S3 Technical Reference Manual*. [https://www.espressif.com/sites/default/files/documentation/esp32-s3_technical_reference_manual_en.pdf](https://www.espressif.com/sites/default/files/documentation/esp32-s3_technical_reference_manual_en.pdf)
-
-2. Espressif Systems. (2023). *ESP32-S3 Datasheet*. [https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf](https://www.espressif.com/sites/default/files/documentation/esp32-s3_datasheet_en.pdf)
-
-3. Arduino. (2023). *Arduino Reference*. [https://www.arduino.cc/reference/en/](https://www.arduino.cc/reference/en/)
-
-4. Espressif Systems. (2023). *ESP-IDF Programming Guide*. [https://docs.espressif.com/projects/esp-idf/en/latest/](https://docs.espressif.com/projects/esp-idf/en/latest/)
-
-5. RandomNerdTutorials. (2023). *ESP32 Tutorials*. [https://randomnerdtutorials.com/esp32/](https://randomnerdtutorials.com/esp32/)
-
----
-
-**Modul berikutnya**: Dasar-Dasar Input/Output dengan ESP32-S3
+<div align="center">
+  
+  **🎓 Modul Kuliah Internet of Things - 2025**
+  
+  *Dibuat oleh [Nama Dosen]*
+  
+</div>
