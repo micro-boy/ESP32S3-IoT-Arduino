@@ -48,39 +48,39 @@ Setelah menyelesaikan materi kuliah ini, mahasiswa diharapkan mampu:
 
 Materi kuliah ini terdiri dari 7 modul utama yang disusun secara bertahap dari konsep dasar hingga implementasi sistem kompleks:
 
-### Modul 1: Pengenalan IoT dan Persiapan Lingkungan Pengembangan
+### Modul 1: Pengenalan IoT dan Persiapan Lingkungan Pengembangan <img src="https://img.shields.io/badge/Tingkat-Pemula-brightgreen" alt="Tingkat: Pemula">
 - Dasar-dasar Internet of Things
 - Pengenalan ESP32-S3 dan setup Arduino IDE
 - Pemrograman dasar ESP32-S3 dengan Arduino IDE
 
-### Modul 2: Sensor dan Aktuator untuk Aplikasi IoT
+### Modul 2: Sensor dan Aktuator untuk Aplikasi IoT <img src="https://img.shields.io/badge/Tingkat-Pemula-brightgreen" alt="Tingkat: Pemula">
 - Sensor lingkungan (suhu, kelembaban, tekanan, kualitas udara)
 - Sensor gerak dan posisi
 - Aktuator dan kontrol perangkat
 - Display dan antarmuka pengguna
 
-### Modul 3: Konektivitas dan Protokol Komunikasi
+### Modul 3: Konektivitas dan Protokol Komunikasi <img src="https://img.shields.io/badge/Tingkat-Menengah-yellow" alt="Tingkat: Menengah">
 - Dasar-dasar konektivitas WiFi
 - Protokol HTTP dan RESTful API
 - Protokol MQTT
 - Bluetooth Low Energy (BLE)
 - Komunikasi Mesh dan ESP-NOW
 
-### Modul 4: Manajemen Daya dan Optimasi
+### Modul 4: Manajemen Daya dan Optimasi <img src="https://img.shields.io/badge/Tingkat-Menengah-yellow" alt="Tingkat: Menengah">
 - Teknik hemat energi
 - Sumber daya dan optimasi kinerja
 
-### Modul 5: Integrasi Cloud dan Aplikasi IoT
+### Modul 5: Integrasi Cloud dan Aplikasi IoT <img src="https://img.shields.io/badge/Tingkat-Menengah-yellow" alt="Tingkat: Menengah">
 - Pengenalan platform IoT cloud
 - Dashboard dan visualisasi data
 - Aplikasi mobile untuk kontrol IoT
 - Automasi dan trigger
 
-### Modul 6: Keamanan IoT
+### Modul 6: Keamanan IoT <img src="https://img.shields.io/badge/Tingkat-Lanjutan-orange" alt="Tingkat: Lanjutan">
 - Dasar-dasar keamanan IoT
 - Update Over-the-Air (OTA) dan pemeliharaan
 
-### Modul 7: Proyek Akhir dan Penerapan
+### Modul 7: Proyek Akhir dan Penerapan <img src="https://img.shields.io/badge/Tingkat-Lanjutan-orange" alt="Tingkat: Lanjutan">
 - Perencanaan proyek komprehensif
 - Pengembangan dan implementasi proyek
 - Pengujian dan evaluasi
