@@ -1,4 +1,4 @@
-# 📚 Modul 1: Pengenalan IoT dan Persiapan Lingkungan Pengembangan
+# 📚 Modul 1: Pengenalan IoT dan Persiapan Lingkungan Pengembangan <img src="https://img.shields.io/badge/Tingkat-Pemula-brightgreen" alt="Tingkat: Pemula">
 
 <div align="center">
   
