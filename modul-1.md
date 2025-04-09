@@ -579,7 +579,10 @@ Rangkaian ini menunjukkan bagaimana membaca input dari tombol tekan dan mengguna
 6. Hubungkan kaki anoda LED ke pin GPIO2 ESP32-S3 melalui resistor 220 ohm
 7. Hubungkan kaki katoda LED ke GND
 
-![Rangkaian GPIO Input](https://via.placeholder.com/800x400?text=Rangkaian+GPIO+Input+ESP32-S3)
+<div align="center">
+   <img src="https://github.com/user-attachments/assets/da03b288-73ec-4ce3-afb0-13e2c8230a1e" width="400">
+  <p><em>Rangkaian GPIO Input</em></p>
+</div>
 
 **Prinsip Kerja:**
 - Ketika tombol tidak ditekan, pin GPIO15 akan terbaca sebagai HIGH karena adanya resistor pull-up internal
