@@ -288,7 +288,7 @@ Untuk contoh Blink Test, kita dapat menggunakan LED yang sudah terpasang pada bo
 - Hubungkan kaki katoda (kaki yang lebih pendek) LED ke pin GND ESP32-S3
   
 <div align="center">
-   <img src="https://github.com/user-attachments/assets/da03b288-73ec-4ce3-afb0-13e2c8230a1e" width="600">
+   <img src="https://github.com/user-attachments/assets/44a1b1ee-a96a-4c6c-8fee-84776aaede20" width="600">
   <p><em>Rangkaian Blink Test</em></p>
 </div>
 
