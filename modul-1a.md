@@ -8,7 +8,7 @@
 
 <div align="center">
   
-  ![Internet of Things Header](https://via.placeholder.com/800x200?text=Internet+of+Things+with+ESP32-S3)
+  ![Internet of Things Header](https://github.com/user-attachments/assets/c623f4aa-d366-4ab2-a380-9abb9fc2d59e)
   
   *Kuliah Internet of Things dengan ESP32-S3 dan Arduino IDE*
   
@@ -929,7 +929,10 @@ Rangkaian ini mengintegrasikan sensor suhu dan kelembaban DHT dengan tiga LED in
 10. Hubungkan kaki anoda LED merah ke pin GPIO17 ESP32-S3 melalui resistor 220 ohm
 11. Hubungkan semua kaki katoda LED ke GND
 
-![Rangkaian Sistem Monitoring Suhu](https://via.placeholder.com/800x600?text=Rangkaian+Sistem+Monitoring+Suhu)
+<div align="center">
+   <img src="https://github.com/user-attachments/assets/8643f183-ba21-487f-867e-e9bdf2d1d6b8" width="500">
+  <p><em>Rangkaian Sistem Monitoring Suhu</em></p>
+</div>
 
 **Prinsip Kerja:**
 - Sensor DHT11/DHT22 mendeteksi suhu dan kelembaban lingkungan
