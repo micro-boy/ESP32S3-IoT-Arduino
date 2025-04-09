@@ -1141,6 +1141,16 @@ Buat sistem yang membaca suhu, kelembaban, dan intensitas cahaya, lalu menampilk
 > 📝 **Catatan untuk Mahasiswa:**  
 > Referensi 1-5 sangat direkomendasikan untuk pemahaman fundamental tentang IoT dan pemrograman ESP32-S3. Untuk panduan praktis tentang setup dan pemrograman dasar, referensi 10-14 akan sangat membantu.
 
+## 🛠️ Masalah dan Bantuan
+
+Saat mengikuti materi ini, Anda mungkin akan menghadapi beberapa kesulitan atau masalah teknis. Kami sangat mendorong Anda untuk menghabiskan waktu mencoba memperbaiki masalah teknis sendiri terlebih dahulu, karena ini adalah cara terbaik untuk belajar.
+
+Jika Anda sudah berusaha tetapi masih butuh bantuan, silakan hubungi kami di:
+
+- 📱 **Telegram**: [Komunitas Koding Indonesia](https://t.me/kodingindonesia)
+
+Tim kami akan membantu menyelesaikan masalah Anda secepat mungkin.
+
 ---
 
 <div align="center">
