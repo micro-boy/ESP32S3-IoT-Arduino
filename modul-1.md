@@ -7,7 +7,7 @@
 </div>
 
 <div align="center">
-  
+  ![image](https://github.com/user-attachments/assets/b7214e68-7014-4add-ac95-6c560a3df743)
   ![Internet of Things Header](https://via.placeholder.com/800x200?text=Internet+of+Things+with+ESP32-S3)
   
   *Kuliah Internet of Things dengan ESP32-S3 dan Arduino IDE*
