@@ -238,6 +238,9 @@ Jika Anda sudah berusaha tetapi masih butuh bantuan, silakan hubungi kami di:
 
 Tim kami akan membantu menyelesaikan masalah Anda secepat mungkin.
 
+[➡️ Lanjut ke Modul 1: Pengenalan IoT dan Persiapan Lingkungan Pengembangan](https://github.com/micro-boy/ESP32S3-IoT-Arduino/blob/main/modul-1a.md)
+---
+
 ## 📜 Lisensi
 
 Materi ini dilisensikan di bawah [MIT License](LICENSE).
