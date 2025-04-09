@@ -580,7 +580,7 @@ Rangkaian ini menunjukkan bagaimana membaca input dari tombol tekan dan mengguna
 7. Hubungkan kaki katoda LED ke GND
 
 <div align="center">
-   <img src="https://github.com/user-attachments/assets/771a63b6-0a28-4fb6-9a3e-3e7f15e58996" width="500">
+   <img src="https://github.com/user-attachments/assets/3d67729a-ddf4-4d25-8e5c-111e7877dd32" width="500">
   <p><em>Rangkaian GPIO Input</em></p>
 </div>
 
