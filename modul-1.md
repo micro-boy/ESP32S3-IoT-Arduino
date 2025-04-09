@@ -7,7 +7,7 @@
 </div>
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/b7214e68-7014-4add-ac95-6c560a3df743" width="400">
+  <img src="https://github.com/user-attachments/assets/c623f4aa-d366-4ab2-a380-9abb9fc2d59e" width="400">
   
   *Kuliah Internet of Things dengan ESP32-S3 dan Arduino IDE*
   
