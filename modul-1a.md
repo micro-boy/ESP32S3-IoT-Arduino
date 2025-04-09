@@ -921,7 +921,7 @@ Rangkaian ini mengintegrasikan sensor suhu dan kelembaban DHT dengan tiga LED in
 2. Pasang sensor DHT pada breadboard
 3. Hubungkan pin VCC DHT ke pin 3.3V ESP32-S3
 4. Hubungkan pin GND DHT ke pin GND ESP32-S3
-5. Hubungkan pin DATA DHT ke pin GPIO4 ESP32-S3
+5. Hubungkan pin DATA DHT ke pin GPIO21 ESP32-S3
 6. Jika sensor DHT tidak memiliki resistor pull-up internal, pasang resistor 10K ohm antara pin DATA dan VCC
 7. Pasang ketiga LED (biru, kuning, dan merah) pada breadboard
 8. Hubungkan kaki anoda LED biru ke pin GPIO2 ESP32-S3 melalui resistor 220 ohm
