@@ -398,7 +398,7 @@ Untuk contoh proyek sensor suhu di akhir modul ini, kita memerlukan library DHT.
 5. Saat muncul dialog "This library depends on Adafruit Unified Sensor...", pilih **Install all**
 
 <div align="center">
-   <img src="https://github.com/user-attachments/assets/6aa8504e-0d73-459e-b165-b1956c6d47e9" width="400">
+   <img src="https://github.com/user-attachments/assets/6aa8504e-0d73-459e-b165-b1956c6d47e9" width="300">
   <p><em>Instalasi Library DHT</em></p>
 </div>
 
