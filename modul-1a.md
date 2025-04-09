@@ -1084,7 +1084,7 @@ void blinkAllLeds(int times) {
 ```
 
 > 🔔 **Penting**:  
-> Untuk menjalankan kode di atas, Anda harus terlebih dahulu menginstal library DHT seperti yang dijelaskan pada bagian "[Menginstal Library di Arduino IDE](#menginstal-library-di-arduino-ide)". Tanpa library ini, kode tidak akan dapat dikompilasi.
+> Untuk menjalankan kode di atas, Anda harus terlebih dahulu menginstal library DHT seperti yang dijelaskan pada bagian "[Menginstal Library di Arduino IDE](#-menginstal-library-di-arduino-ide)". Tanpa library ini, kode tidak akan dapat dikompilasi.
 
 ---
 ---
