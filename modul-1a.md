@@ -1151,12 +1151,7 @@ Jika Anda sudah berusaha tetapi masih butuh bantuan, silakan hubungi kami di:
 
 Tim kami akan membantu menyelesaikan masalah Anda secepat mungkin.
 
+[➡️ Lanjut ke Modul 2: Sensor dan Aktuator untuk Aplikasi IoT](https://github.com/micro-boy/ESP32S3-IoT-Arduino/blob/main/modul-2.md)
 ---
 
-<div align="center">
-  
-  **🎓 Modul Kuliah Internet of Things - 2025**
-  
-  *Dibuat oleh [Nama Dosen]*
-  
-</div>
+
