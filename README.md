@@ -228,7 +228,15 @@ Beberapa ide proyek yang bisa dikembangkan selama kuliah:
 17. Lewis, S. (2022). "Embedded Systems Design with ESP32: Introduction to Design and Programming with the ESP32 Microcontroller." Independently published.
 18. Vega, L. (2023). "Learn ESP32: Programming for the Internet of Things with ESP32 and Arduino." Packt Publishing.
 
+## 🛠️ Masalah dan Bantuan
 
+Saat mengikuti materi ini, Anda mungkin akan menghadapi beberapa kesulitan atau masalah teknis. Kami sangat mendorong Anda untuk menghabiskan waktu mencoba memperbaiki masalah teknis sendiri terlebih dahulu, karena ini adalah cara terbaik untuk belajar.
+
+Jika Anda sudah berusaha tetapi masih butuh bantuan, silakan hubungi kami di:
+
+- 📱 **Telegram**: [Komunitas Koding Indonesia](https://t.me/kodingindonesia)
+
+Tim kami akan membantu menyelesaikan masalah Anda secepat mungkin.
 
 ## 📜 Lisensi
 
