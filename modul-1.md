@@ -172,7 +172,10 @@ IoT telah mengubah banyak industri dan aspek kehidupan kita:
 
 ESP32-S3 adalah mikrokontroler canggih yang dikembangkan oleh Espressif Systems. Ini adalah evolusi dari keluarga ESP32 populer, dengan peningkatan signifikan dalam kemampuan pemrosesan, konektivitas, dan fitur keamanan.
 
-<img src="https://github.com/user-attachments/assets/9ddf4b0b-0300-4beb-9ba3-29479c1c4e45" width="400">
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/9ddf4b0b-0300-4beb-9ba3-29479c1c4e45" width="600">
+  <p><em>Rangkaian LED eksternal dengan ESP32-S3</em></p>
+</div>
 
 #### Fitur Utama ESP32-S3:
 
