@@ -2,7 +2,7 @@
 
 <div align="center">
   
-  ![IoT Header](https://via.placeholder.com/1200x300?text=Internet+of+Things+dengan+ESP32-S3)
+   <img src="https://github.com/user-attachments/assets/b7214e68-7014-4add-ac95-6c560a3df743" width="400">
 
   [![Arduino Compatible](https://img.shields.io/badge/Arduino-Compatible-brightgreen.svg)](https://www.arduino.cc/)
   [![ESP32-S3](https://img.shields.io/badge/ESP32-S3-blue.svg)](https://www.espressif.com/)
