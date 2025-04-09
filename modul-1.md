@@ -383,7 +383,7 @@ Arduino IDE memiliki Library Manager bawaan yang memudahkan proses instalasi lib
 8. Tutup Library Manager
 
 <div align="center">
-   <img src="https://github.com/user-attachments/assets/dda5d553-88d1-4d5e-8e2c-1c7ed8efdb52" width="400">
+   <img src="https://github.com/user-attachments/assets/dda5d553-88d1-4d5e-8e2c-1c7ed8efdb52" width="300">
   <p><em>Arduino Library Manager</em></p>
 </div>
 
