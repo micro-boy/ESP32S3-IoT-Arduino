@@ -18,12 +18,12 @@
 
 ## 📋 Daftar Isi
 
-- [Pertemuan 1: Dasar-Dasar Internet of Things](#pertemuan-1-dasar-dasar-internet-of-things)
-- [Pertemuan 2: Pengenalan ESP32-S3 dan Setup Arduino IDE](#pertemuan-2-pengenalan-esp32-s3-dan-setup-arduino-ide)
-- [Menginstal Library di Arduino IDE](#menginstal-library-di-arduino-ide)
-- [Pertemuan 3: Pemrograman Dasar ESP32-S3 dengan Arduino IDE](#pertemuan-3-pemrograman-dasar-esp32-s3-dengan-arduino-ide)
-- [Tugas dan Latihan](#tugas-dan-latihan)
-- [Referensi dan Bacaan Tambahan](#referensi-dan-bacaan-tambahan)
+- [Pertemuan 1: Dasar-Dasar Internet of Things](#-pertemuan-1-dasar-dasar-internet-of-things)
+- [Pertemuan 2: Pengenalan ESP32-S3 dan Setup Arduino IDE](#-pertemuan-2-pengenalan-esp32-s3-dan-setup-arduino-ide)
+- [Menginstal Library di Arduino IDE](#-menginstal-library-di-arduino-ide)
+- [Pertemuan 3: Pemrograman Dasar ESP32-S3 dengan Arduino IDE](#-pertemuan-3-pemrograman-dasar-esp32-s3-dengan-arduino-ide)
+- [Tugas dan Latihan](#-tugas-dan-latihan)
+- [Referensi dan Bacaan Tambahan](#-referensi-dan-bacaan-tambahan)
 
 ---
 
