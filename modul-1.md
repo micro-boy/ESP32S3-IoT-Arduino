@@ -664,7 +664,10 @@ Rangkaian ini menunjukkan bagaimana membaca nilai analog menggunakan ADC (Analog
 4. Hubungkan pin tengah (wiper) potensiometer ke pin GPIO1/ADC1_0 ESP32-S3
 5. Hubungkan pin luar kedua potensiometer ke GND ESP32-S3
 
-![Rangkaian ADC](https://via.placeholder.com/800x400?text=Rangkaian+ADC+ESP32-S3)
+<div align="center">
+   <img src="https://github.com/user-attachments/assets/fd26720b-ab3a-4695-94fb-138a598bc4b3" width="500">
+  <p><em>Rangkaian ADC</em></p>
+</div>
 
 **Prinsip Kerja:**
 - Potensiometer berfungsi sebagai pembagi tegangan yang dapat diatur
