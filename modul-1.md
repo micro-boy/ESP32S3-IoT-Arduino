@@ -69,7 +69,10 @@ Sistem IoT terdiri dari beberapa lapisan utama:
    - Dashboard visualisasi
    - Sistem kontrol dan otomasi
 
-![Arsitektur IoT](https://via.placeholder.com/800x400?text=Arsitektur+Sistem+IoT)
+<div align="center">
+   <img src="https://github.com/user-attachments/assets/833e0c24-0969-4076-9ff0-62fbcdc556db" width="600">
+  <p><em>Diagram Blok Arsitektur ESP32-S3</em></p>
+</div>
 
 ### Komponen Utama dalam Sistem IoT
 
@@ -169,7 +172,7 @@ IoT telah mengubah banyak industri dan aspek kehidupan kita:
 
 ESP32-S3 adalah mikrokontroler canggih yang dikembangkan oleh Espressif Systems. Ini adalah evolusi dari keluarga ESP32 populer, dengan peningkatan signifikan dalam kemampuan pemrosesan, konektivitas, dan fitur keamanan.
 
-![ESP32-S3 DevKit](https://via.placeholder.com/600x400?text=ESP32-S3+DevKit)
+<img src="https://github.com/user-attachments/assets/9ddf4b0b-0300-4beb-9ba3-29479c1c4e45" width="400">
 
 #### Fitur Utama ESP32-S3:
 
@@ -230,7 +233,10 @@ Arduino IDE tidak mendukung ESP32-S3 secara default. Kita perlu menambahkan duku
 7. Instal "ESP32 by Espressif Systems" versi terbaru
 8. Tunggu hingga instalasi selesai
 
-![Arduino IDE Boards Manager](https://via.placeholder.com/800x500?text=Arduino+IDE+Boards+Manager+ESP32)
+<div align="center">
+   <img src="https://github.com/user-attachments/assets/f537585a-8107-4cd3-9e48-660a3b7eff08" width="600">
+  <p><em>Arduino IDE Boards Manager</em></p>
+</div>
 
 #### 3. Memilih Board ESP32-S3
 
@@ -280,8 +286,11 @@ Untuk contoh Blink Test, kita dapat menggunakan LED yang sudah terpasang pada bo
 **Rangkaian dengan LED Eksternal (opsional):**
 - Hubungkan kaki anoda (kaki yang lebih panjang) LED ke pin GPIO2 ESP32-S3 melalui resistor 220 ohm
 - Hubungkan kaki katoda (kaki yang lebih pendek) LED ke pin GND ESP32-S3
-
-![Rangkaian Blink Test](https://via.placeholder.com/800x400?text=Rangkaian+Blink+Test+ESP32-S3)
+  
+<div align="center">
+   <img src="https://github.com/user-attachments/assets/da03b288-73ec-4ce3-afb0-13e2c8230a1e" width="600">
+  <p><em>Rangkaian Blink Test</em></p>
+</div>
 
 **Prinsip Kerja:**
 ESP32-S3 akan mengirimkan sinyal digital HIGH (3.3V) dan LOW (0V) secara bergantian ke pin GPIO2. Ketika sinyal HIGH, LED akan menyala. Ketika sinyal LOW, LED akan mati. Resistor berfungsi untuk membatasi arus yang mengalir ke LED agar tidak merusak LED atau pin GPIO.
@@ -370,7 +379,10 @@ Arduino IDE memiliki Library Manager bawaan yang memudahkan proses instalasi lib
 7. Tunggu hingga proses instalasi selesai
 8. Tutup Library Manager
 
-![Arduino Library Manager](https://via.placeholder.com/800x500?text=Arduino+Library+Manager)
+<div align="center">
+   <img src="https://github.com/user-attachments/assets/dda5d553-88d1-4d5e-8e2c-1c7ed8efdb52" width="600">
+  <p><em>Arduino Library Manager</em></p>
+</div>
 
 ### Menginstal Library DHT untuk Sensor Suhu
 
@@ -382,7 +394,10 @@ Untuk contoh proyek sensor suhu di akhir modul ini, kita memerlukan library DHT.
 4. Klik **Install**
 5. Saat muncul dialog "This library depends on Adafruit Unified Sensor...", pilih **Install all**
 
-![Instalasi Library DHT](https://via.placeholder.com/800x400?text=Instalasi+Library+DHT)
+<div align="center">
+   <img src="https://github.com/user-attachments/assets/6aa8504e-0d73-459e-b165-b1956c6d47e9" width="600">
+  <p><em>Instalasi Library DHT</em></p>
+</div>
 
 Setelah instalasi, library ini memungkinkan kita untuk dengan mudah membaca data dari sensor DHT11 atau DHT22.
 
@@ -472,7 +487,10 @@ Rangkaian ini mendemonstrasikan penggunaan pin GPIO sebagai output digital untuk
 3. Hubungkan resistor 220 ohm dari kaki anoda LED ke pin GPIO2 ESP32-S3
 4. Hubungkan kaki katoda LED ke GND pada ESP32-S3
 
-![Rangkaian GPIO Output](https://via.placeholder.com/800x400?text=Rangkaian+GPIO+Output+ESP32-S3)
+<div align="center">
+   <img src="https://github.com/user-attachments/assets/da03b288-73ec-4ce3-afb0-13e2c8230a1e" width="600">
+  <p><em>Rangkaian GPIO Output</em></p>
+</div>
 
 **Prinsip Kerja:**
 Program akan menghasilkan pola kedipan yang berbeda dengan mengubah status pin GPIO dari HIGH ke LOW dengan interval waktu yang bervariasi. LED akan menyala saat pin GPIO bernilai HIGH dan mati saat pin GPIO bernilai LOW.
