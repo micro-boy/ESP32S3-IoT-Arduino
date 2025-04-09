@@ -70,7 +70,7 @@ Sistem IoT terdiri dari beberapa lapisan utama:
    - Sistem kontrol dan otomasi
 
 <div align="center">
-   <img src="https://github.com/user-attachments/assets/833e0c24-0969-4076-9ff0-62fbcdc556db" width="600">
+   <img src="https://github.com/user-attachments/assets/833e0c24-0969-4076-9ff0-62fbcdc556db" width="500">
   <p><em>Diagram Blok Arsitektur ESP32-S3</em></p>
 </div>
 
@@ -173,7 +173,7 @@ IoT telah mengubah banyak industri dan aspek kehidupan kita:
 ESP32-S3 adalah mikrokontroler canggih yang dikembangkan oleh Espressif Systems. Ini adalah evolusi dari keluarga ESP32 populer, dengan peningkatan signifikan dalam kemampuan pemrosesan, konektivitas, dan fitur keamanan.
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/9ddf4b0b-0300-4beb-9ba3-29479c1c4e45" width="600">
+  <img src="https://github.com/user-attachments/assets/9ddf4b0b-0300-4beb-9ba3-29479c1c4e45" width="500">
   <p><em>Rangkaian LED eksternal dengan ESP32-S3</em></p>
 </div>
 
@@ -291,7 +291,7 @@ Untuk contoh Blink Test, kita dapat menggunakan LED yang sudah terpasang pada bo
 - Hubungkan kaki katoda (kaki yang lebih pendek) LED ke pin GND ESP32-S3
   
 <div align="center">
-   <img src="https://github.com/user-attachments/assets/44a1b1ee-a96a-4c6c-8fee-84776aaede20" width="600">
+   <img src="https://github.com/user-attachments/assets/44a1b1ee-a96a-4c6c-8fee-84776aaede20" width="500">
   <p><em>Rangkaian Blink Test</em></p>
 </div>
 
@@ -383,7 +383,7 @@ Arduino IDE memiliki Library Manager bawaan yang memudahkan proses instalasi lib
 8. Tutup Library Manager
 
 <div align="center">
-   <img src="https://github.com/user-attachments/assets/dda5d553-88d1-4d5e-8e2c-1c7ed8efdb52" width="600">
+   <img src="https://github.com/user-attachments/assets/dda5d553-88d1-4d5e-8e2c-1c7ed8efdb52" width="500">
   <p><em>Arduino Library Manager</em></p>
 </div>
 
@@ -398,7 +398,7 @@ Untuk contoh proyek sensor suhu di akhir modul ini, kita memerlukan library DHT.
 5. Saat muncul dialog "This library depends on Adafruit Unified Sensor...", pilih **Install all**
 
 <div align="center">
-   <img src="https://github.com/user-attachments/assets/6aa8504e-0d73-459e-b165-b1956c6d47e9" width="600">
+   <img src="https://github.com/user-attachments/assets/6aa8504e-0d73-459e-b165-b1956c6d47e9" width="500">
   <p><em>Instalasi Library DHT</em></p>
 </div>
 
@@ -491,7 +491,7 @@ Rangkaian ini mendemonstrasikan penggunaan pin GPIO sebagai output digital untuk
 4. Hubungkan kaki katoda LED ke GND pada ESP32-S3
 
 <div align="center">
-   <img src="https://github.com/user-attachments/assets/da03b288-73ec-4ce3-afb0-13e2c8230a1e" width="600">
+   <img src="https://github.com/user-attachments/assets/da03b288-73ec-4ce3-afb0-13e2c8230a1e" width="500">
   <p><em>Rangkaian GPIO Output</em></p>
 </div>
 
