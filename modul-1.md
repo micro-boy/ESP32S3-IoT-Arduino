@@ -237,7 +237,7 @@ Arduino IDE tidak mendukung ESP32-S3 secara default. Kita perlu menambahkan duku
 8. Tunggu hingga instalasi selesai
 
 <div align="center">
-   <img src="https://github.com/user-attachments/assets/f537585a-8107-4cd3-9e48-660a3b7eff08" width="600">
+   <img src="https://github.com/user-attachments/assets/f537585a-8107-4cd3-9e48-660a3b7eff08" width="400">
   <p><em>Arduino IDE Boards Manager</em></p>
 </div>
 
