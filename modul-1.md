@@ -268,6 +268,25 @@ Beberapa library berguna untuk ESP32-S3:
    - "PubSubClient" (untuk MQTT)
    - "NTPClient" (untuk sinkronisasi waktu)
 
+### Rangkaian untuk Verifikasi Instalasi ESP32-S3 (Blink Test)
+
+**Komponen yang dibutuhkan:**
+- ESP32-S3 Development Board
+- Kabel USB
+- LED (opsional, karena kita akan menggunakan LED bawaan)
+
+**Penjelasan Rangkaian:**
+Untuk contoh Blink Test, kita dapat menggunakan LED yang sudah terpasang pada board ESP32-S3. Hampir semua development board ESP32-S3 memiliki LED bawaan yang terhubung ke GPIO2. Jika board Anda tidak memiliki LED bawaan, Anda dapat menghubungkan LED eksternal seperti pada gambar di bawah.
+
+**Rangkaian dengan LED Eksternal (opsional):**
+- Hubungkan kaki anoda (kaki yang lebih panjang) LED ke pin GPIO2 ESP32-S3 melalui resistor 220 ohm
+- Hubungkan kaki katoda (kaki yang lebih pendek) LED ke pin GND ESP32-S3
+
+![Rangkaian Blink Test](https://via.placeholder.com/800x400?text=Rangkaian+Blink+Test+ESP32-S3)
+
+**Prinsip Kerja:**
+ESP32-S3 akan mengirimkan sinyal digital HIGH (3.3V) dan LOW (0V) secara bergantian ke pin GPIO2. Ketika sinyal HIGH, LED akan menyala. Ketika sinyal LOW, LED akan mati. Resistor berfungsi untuk membatasi arus yang mengalir ke LED agar tidak merusak LED atau pin GPIO.
+
 ### Verifikasi Instalasi dengan Sketch Sederhana
 
 Mari kita pastikan semuanya berfungsi dengan baik menggunakan sketch sederhana:
@@ -430,9 +449,43 @@ void loop() {
 - **setup()**: Dieksekusi sekali saat board dinyalakan atau di-reset. Fungsi ini digunakan untuk inisialisasi pin, komunikasi serial, sensor, dan komponen lain.
 - **loop()**: Dieksekusi berulang-ulang setelah setup() selesai. Fungsi ini berisi kode utama program Anda.
 
+---
+
 ### GPIO (General Purpose Input/Output)
 
 ESP32-S3 memiliki banyak pin GPIO yang dapat dikonfigurasi sebagai input atau output digital.
+
+#### Rangkaian untuk GPIO Output (LED Berkedip)
+
+**Komponen yang dibutuhkan:**
+- ESP32-S3 Development Board
+- 1 LED (warna sesuai preferensi)
+- 1 resistor 220 ohm
+- Breadboard
+- Kabel jumper
+
+**Penjelasan Rangkaian:**
+Rangkaian ini mendemonstrasikan penggunaan pin GPIO sebagai output digital untuk mengendalikan LED dengan pola kedipan tertentu.
+
+**Langkah-langkah Perakitan:**
+1. Pasang ESP32-S3 pada breadboard
+2. Pasang LED pada breadboard dengan kaki anoda dan katoda pada baris yang berbeda
+3. Hubungkan resistor 220 ohm dari kaki anoda LED ke pin GPIO2 ESP32-S3
+4. Hubungkan kaki katoda LED ke GND pada ESP32-S3
+
+![Rangkaian GPIO Output](https://via.placeholder.com/800x400?text=Rangkaian+GPIO+Output+ESP32-S3)
+
+**Prinsip Kerja:**
+Program akan menghasilkan pola kedipan yang berbeda dengan mengubah status pin GPIO dari HIGH ke LOW dengan interval waktu yang bervariasi. LED akan menyala saat pin GPIO bernilai HIGH dan mati saat pin GPIO bernilai LOW.
+
+**Diagram Waktu (Timing Diagram):**
+```
+        _    _    _    _    _         _         _         _
+       | |  | |  | |  | |  | |       | |       | |       | |
+GPIO2 _| |__| |__| |__| |__| |_______|_|_______|_|_______|_|_____
+       
+       <-- Kedip Cepat -->   Jeda   <-- Kedip Lambat -->   Jeda
+```
 
 #### Menggunakan GPIO sebagai Output
 
@@ -482,6 +535,39 @@ void loop() {
 ```
 
 ---
+
+#### Rangkaian untuk GPIO Input (Tombol dan LED)
+
+**Komponen yang dibutuhkan:**
+- ESP32-S3 Development Board
+- 1 LED (warna sesuai preferensi)
+- 1 resistor 220 ohm (untuk LED)
+- 1 push button (tombol tekan)
+- 1 resistor 10K ohm (untuk pull-up eksternal, opsional karena ESP32-S3 memiliki pull-up internal)
+- Breadboard
+- Kabel jumper
+
+**Penjelasan Rangkaian:**
+Rangkaian ini menunjukkan bagaimana membaca input dari tombol tekan dan menggunakannya untuk mengendalikan LED. Kita akan menggunakan resistor pull-up internal ESP32-S3, tetapi jika Anda ingin menggunakan resistor eksternal, Anda dapat menambahkannya seperti pada diagram.
+
+**Langkah-langkah Perakitan:**
+1. Pasang ESP32-S3 pada breadboard
+2. Pasang tombol tekan pada breadboard
+3. Hubungkan satu kaki tombol ke pin GPIO15 ESP32-S3
+4. Hubungkan kaki lain tombol ke GND
+5. Pasang LED pada breadboard
+6. Hubungkan kaki anoda LED ke pin GPIO2 ESP32-S3 melalui resistor 220 ohm
+7. Hubungkan kaki katoda LED ke GND
+
+![Rangkaian GPIO Input](https://via.placeholder.com/800x400?text=Rangkaian+GPIO+Input+ESP32-S3)
+
+**Prinsip Kerja:**
+- Ketika tombol tidak ditekan, pin GPIO15 akan terbaca sebagai HIGH karena adanya resistor pull-up internal
+- Ketika tombol ditekan, pin GPIO15 terhubung ke GND dan akan terbaca sebagai LOW
+- Program akan menyalakan LED ketika tombol ditekan (GPIO15 = LOW) dan mematikan LED ketika tombol dilepas
+
+**Catatan tentang Debouncing:**
+Tombol mekanis sering menghasilkan "bouncing" (getaran kontak) yang dapat menyebabkan beberapa pembacaan status dalam waktu singkat. Dalam contoh kode, kita menggunakan delay(100) sederhana sebagai metode debouncing. Untuk aplikasi yang lebih sensitif, teknik debouncing yang lebih canggih mungkin diperlukan.
 
 #### Menggunakan GPIO sebagai Input
 
@@ -537,6 +623,35 @@ void loop() {
 
 ### Pembacaan Input Analog dengan ADC
 
+#### Rangkaian untuk ADC (Pembacaan Nilai Analog)
+
+**Komponen yang dibutuhkan:**
+- ESP32-S3 Development Board
+- 1 potensiometer 10K ohm (atau sensor analog lain seperti LDR)
+- Breadboard
+- Kabel jumper
+
+**Penjelasan Rangkaian:**
+Rangkaian ini menunjukkan bagaimana membaca nilai analog menggunakan ADC (Analog-to-Digital Converter) pada ESP32-S3. Kita akan menggunakan potensiometer sebagai sumber input analog yang dapat diatur.
+
+**Langkah-langkah Perakitan:**
+1. Pasang ESP32-S3 pada breadboard
+2. Pasang potensiometer pada breadboard
+3. Hubungkan pin luar pertama potensiometer ke 3.3V ESP32-S3
+4. Hubungkan pin tengah (wiper) potensiometer ke pin GPIO1/ADC1_0 ESP32-S3
+5. Hubungkan pin luar kedua potensiometer ke GND ESP32-S3
+
+![Rangkaian ADC](https://via.placeholder.com/800x400?text=Rangkaian+ADC+ESP32-S3)
+
+**Prinsip Kerja:**
+- Potensiometer berfungsi sebagai pembagi tegangan yang dapat diatur
+- Saat knob potensiometer diputar, tegangan pada pin tengah akan berubah antara 0V dan 3.3V
+- ADC pada ESP32-S3 akan mengubah tegangan analog ini menjadi nilai digital antara 0 dan 4095 (untuk resolusi 12-bit)
+- Program akan menampilkan nilai ADC dan tegangan yang dihitung pada Serial Monitor
+
+**Catatan tentang ADC ESP32-S3:**
+ESP32-S3 memiliki dua blok ADC (ADC1 dan ADC2) dengan resolusi hingga 12-bit. Beberapa pin GPIO dapat berfungsi sebagai input ADC, tetapi perhatikan bahwa tidak semua pin ADC tersedia saat menggunakan WiFi atau flash memory. Selalu periksa dokumentasi ESP32-S3 untuk melihat pin ADC yang tersedia.
+
 ESP32-S3 memiliki Analog-to-Digital Converter (ADC) yang memungkinkan kita membaca nilai analog dari sensor.
 
 ```cpp
@@ -584,6 +699,57 @@ void loop() {
 ---
 
 ### Pulse Width Modulation (PWM)
+
+#### Rangkaian untuk PWM (LED dengan Kecerahan Berubah)
+
+**Komponen yang dibutuhkan:**
+- ESP32-S3 Development Board
+- 1 LED (warna sesuai preferensi)
+- 1 resistor 220 ohm
+- Breadboard
+- Kabel jumper
+
+**Penjelasan Rangkaian:**
+Rangkaian ini menunjukkan penggunaan PWM (Pulse Width Modulation) untuk mengontrol kecerahan LED. PWM adalah teknik di mana sinyal digital diubah menjadi analog dengan cara mengubah lebar pulsa sinyal.
+
+**Langkah-langkah Perakitan:**
+1. Pasang ESP32-S3 pada breadboard
+2. Pasang LED pada breadboard
+3. Hubungkan kaki anoda LED ke pin GPIO2 ESP32-S3 melalui resistor 220 ohm
+4. Hubungkan kaki katoda LED ke GND ESP32-S3
+
+![Rangkaian PWM](https://via.placeholder.com/800x400?text=Rangkaian+PWM+ESP32-S3)
+
+**Prinsip Kerja:**
+- ESP32-S3 memiliki hardware PWM yang dapat menghasilkan sinyal PWM pada berbagai pin
+- Sinyal PWM adalah sinyal digital yang berubah antara HIGH dan LOW dengan frekuensi tertentu
+- Rasio antara waktu sinyal HIGH dengan periode total sinyal disebut duty cycle
+- Semakin besar duty cycle, semakin terang LED akan menyala
+- Pada contoh ini, duty cycle akan berubah dari 0% (mati) hingga 100% (terang maksimum) dan kembali ke 0%
+
+**Diagram PWM dengan Duty Cycle Berbeda:**
+```
+Duty Cycle 25%:
+        _   _   _   _
+       | | | | | | | |
+______| |_| |_| |_| |____
+   <-T->
+   
+Duty Cycle 50%:
+        ___   ___   ___
+       |   | |   | |   |
+______|   |_|   |_|   |__
+   <-T->
+   
+Duty Cycle 75%:
+        _____   _____
+       |     | |     |
+______|     |_|     |__
+   <-T->
+```
+
+**Catatan tentang PWM ESP32-S3:**
+ESP32-S3 memiliki 8 channel PWM yang dapat dikonfigurasikan dengan frekuensi dan resolusi yang berbeda-beda. Setiap channel dapat terhubung ke pin GPIO yang berbeda. Dalam contoh kode, kita menggunakan `ledcSetup()` dan `ledcAttachPin()` untuk mengonfigurasi PWM.
 
 PWM memungkinkan kita menghasilkan sinyal analog dari pin digital, berguna untuk mengontrol kecerahan LED, kecepatan motor, dll.
 
@@ -641,6 +807,60 @@ void loop() {
 ---
 
 ### Membuat Proyek Sederhana: Sistem Monitoring Suhu
+
+#### Rangkaian untuk Sistem Monitoring Suhu
+
+**Komponen yang dibutuhkan:**
+- ESP32-S3 Development Board
+- Sensor DHT11 atau DHT22
+- 3 LED (biru, kuning, merah)
+- 3 resistor 220 ohm (untuk LED)
+- 1 resistor 10K ohm (untuk DHT jika tidak memiliki resistor pull-up internal)
+- Breadboard
+- Kabel jumper
+
+**Penjelasan Rangkaian:**
+Rangkaian ini mengintegrasikan sensor suhu dan kelembaban DHT dengan tiga LED indikator yang akan menyala berdasarkan nilai suhu yang terdeteksi. Sistem ini menggabungkan beberapa konsep yang telah dipelajari sebelumnya: komunikasi dengan sensor, pembacaan nilai analog, dan kontrol output digital.
+
+**Langkah-langkah Perakitan:**
+1. Pasang ESP32-S3 pada breadboard
+2. Pasang sensor DHT pada breadboard
+3. Hubungkan pin VCC DHT ke pin 3.3V ESP32-S3
+4. Hubungkan pin GND DHT ke pin GND ESP32-S3
+5. Hubungkan pin DATA DHT ke pin GPIO4 ESP32-S3
+6. Jika sensor DHT tidak memiliki resistor pull-up internal, pasang resistor 10K ohm antara pin DATA dan VCC
+7. Pasang ketiga LED (biru, kuning, dan merah) pada breadboard
+8. Hubungkan kaki anoda LED biru ke pin GPIO2 ESP32-S3 melalui resistor 220 ohm
+9. Hubungkan kaki anoda LED kuning ke pin GPIO16 ESP32-S3 melalui resistor 220 ohm
+10. Hubungkan kaki anoda LED merah ke pin GPIO17 ESP32-S3 melalui resistor 220 ohm
+11. Hubungkan semua kaki katoda LED ke GND
+
+![Rangkaian Sistem Monitoring Suhu](https://via.placeholder.com/800x600?text=Rangkaian+Sistem+Monitoring+Suhu)
+
+**Prinsip Kerja:**
+- Sensor DHT11/DHT22 mendeteksi suhu dan kelembaban lingkungan
+- ESP32-S3 membaca data dari sensor secara berkala (setiap 2 detik)
+- Berdasarkan nilai suhu yang dibaca:
+  - LED biru menyala jika suhu di bawah 20°C (dingin)
+  - LED kuning menyala jika suhu antara 20°C dan 30°C (normal)
+  - LED merah menyala jika suhu di atas 30°C (panas)
+- Data suhu dan kelembaban ditampilkan pada Serial Monitor
+
+**Perbedaan antara DHT11 dan DHT22:**
+
+| Fitur | DHT11 | DHT22 |
+|-------|-------|-------|
+| Rentang Suhu | 0-50°C | -40-80°C |
+| Akurasi Suhu | ±2°C | ±0.5°C |
+| Rentang Kelembaban | 20-90% RH | 0-100% RH |
+| Akurasi Kelembaban | ±5% RH | ±2% RH |
+| Waktu Sampling | 1 Hz (sekali per detik) | 0.5 Hz (sekali per 2 detik) |
+| Harga | Lebih murah | Lebih mahal |
+
+**Catatan Penting:**
+- Beberapa sensor DHT22 dijual dengan nama AM2302, yang merupakan varian DHT22 dengan housing berbeda
+- Pastikan untuk menunggu minimal 2 detik antara pembacaan sensor untuk mendapatkan hasil yang akurat
+- Jangan lupa untuk menginstal library DHT sebelum mengupload kode
 
 Mari kita kombinasikan semua yang telah kita pelajari untuk membuat sistem yang membaca sensor suhu dan merespons dengan LED dan output serial.
 
@@ -769,27 +989,6 @@ void blinkAllLeds(int times) {
 
 > 🔔 **Penting**:  
 > Untuk menjalankan kode di atas, Anda harus terlebih dahulu menginstal library DHT seperti yang dijelaskan pada bagian "[Menginstal Library di Arduino IDE](#menginstal-library-di-arduino-ide)". Tanpa library ini, kode tidak akan dapat dikompilasi.
-
-### Rangkaian untuk Proyek Sensor Suhu
-
-![Rangkaian Sensor Suhu](https://via.placeholder.com/800x600?text=Rangkaian+Sistem+Monitoring+Suhu)
-
-**Komponen yang dibutuhkan:**
-- ESP32-S3 Development Board
-- Sensor DHT11 atau DHT22
-- 3 LED (biru, kuning, merah)
-- 3 resistor 220 ohm (untuk LED)
-- Resistor 10K ohm (untuk DHT jika tidak memiliki resistor pull-up internal)
-- Breadboard dan kabel jumper
-
-**Koneksi:**
-1. Hubungkan pin VCC DHT ke 3.3V ESP32-S3
-2. Hubungkan pin GND DHT ke GND ESP32-S3
-3. Hubungkan pin DATA DHT ke pin 4 ESP32-S3
-4. Hubungkan LED biru ke pin 2 ESP32-S3 melalui resistor 220 ohm
-5. Hubungkan LED kuning ke pin 16 ESP32-S3 melalui resistor 220 ohm
-6. Hubungkan LED merah ke pin 17 ESP32-S3 melalui resistor 220 ohm
-7. Hubungkan ujung lain semua LED ke GND
 
 ---
 ---
