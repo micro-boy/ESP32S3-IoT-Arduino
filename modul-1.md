@@ -383,7 +383,7 @@ Arduino IDE memiliki Library Manager bawaan yang memudahkan proses instalasi lib
 8. Tutup Library Manager
 
 <div align="center">
-   <img src="https://github.com/user-attachments/assets/dda5d553-88d1-4d5e-8e2c-1c7ed8efdb52" width="500">
+   <img src="https://github.com/user-attachments/assets/dda5d553-88d1-4d5e-8e2c-1c7ed8efdb52" width="400">
   <p><em>Arduino Library Manager</em></p>
 </div>
 
@@ -398,7 +398,7 @@ Untuk contoh proyek sensor suhu di akhir modul ini, kita memerlukan library DHT.
 5. Saat muncul dialog "This library depends on Adafruit Unified Sensor...", pilih **Install all**
 
 <div align="center">
-   <img src="https://github.com/user-attachments/assets/6aa8504e-0d73-459e-b165-b1956c6d47e9" width="500">
+   <img src="https://github.com/user-attachments/assets/6aa8504e-0d73-459e-b165-b1956c6d47e9" width="400">
   <p><em>Instalasi Library DHT</em></p>
 </div>
 
@@ -491,7 +491,7 @@ Rangkaian ini mendemonstrasikan penggunaan pin GPIO sebagai output digital untuk
 4. Hubungkan kaki katoda LED ke GND pada ESP32-S3
 
 <div align="center">
-   <img src="https://github.com/user-attachments/assets/da03b288-73ec-4ce3-afb0-13e2c8230a1e" width="500">
+   <img src="https://github.com/user-attachments/assets/da03b288-73ec-4ce3-afb0-13e2c8230a1e" width="400">
   <p><em>Rangkaian GPIO Output</em></p>
 </div>
 
