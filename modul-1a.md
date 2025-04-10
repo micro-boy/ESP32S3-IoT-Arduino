@@ -1,16 +1,15 @@
 # 📚 Modul 1: Pengenalan IoT dan Persiapan Lingkungan Pengembangan 
 
 <div align="center">
-  <img src="https://img.shields.io/badge/Tingkat-Pemula-brightgreen" alt="Tingkat: Pemula">
-  <img src="https://img.shields.io/badge/Platform-ESP32--S3-blue" alt="Platform: ESP32-S3">
-  <img src="https://img.shields.io/badge/IDE-Arduino-red" alt="IDE: Arduino">
-</div>
-
-<div align="center">
   <img src="https://github.com/user-attachments/assets/c623f4aa-d366-4ab2-a380-9abb9fc2d59e" width="400">
   
   *Kuliah Internet of Things dengan ESP32-S3 dan Arduino IDE*
   
+</div>
+<div align="center">
+  <img src="https://img.shields.io/badge/Tingkat-Pemula-brightgreen" alt="Tingkat: Pemula">
+  <img src="https://img.shields.io/badge/Platform-ESP32--S3-blue" alt="Platform: ESP32-S3">
+  <img src="https://img.shields.io/badge/IDE-Arduino-red" alt="IDE: Arduino">
 </div>
 
 ---
