@@ -1,6 +1,6 @@
 # 📚 Modul 1: Pengenalan IoT dan Persiapan Lingkungan Pengembangan 
 
-<div>
+<div align="center">
   <img src="https://img.shields.io/badge/Tingkat-Pemula-brightgreen" alt="Tingkat: Pemula">
   <img src="https://img.shields.io/badge/Platform-ESP32--S3-blue" alt="Platform: ESP32-S3">
   <img src="https://img.shields.io/badge/IDE-Arduino-red" alt="IDE: Arduino">
